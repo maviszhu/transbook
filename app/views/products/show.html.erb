@@ -11,7 +11,7 @@
       <h2><%= @product.title %></h2>
     </div>
     <div class="row">
-      <p><%= @product.description %></p>
+      <p><%= simple_format(@product.description) %></p>
     </div>
     <div class="row">
       <p>数量:<%= @product.stock %></p>

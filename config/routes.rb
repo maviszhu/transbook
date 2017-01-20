@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :products
+  resources :products, only: [:show]
   namespace :admin do
     resources :products
   end
