@@ -54,7 +54,7 @@ class Admin::ProductsController < ApplicationController
  end
  def check_admin
    if !current_user.is_admin
-     redirect_to root_path, alert: "当前账号"+current_user.email+"不是admin！"
+     redirect_to root_path, alert: "当前账号"+current_user.email+"没有权限！"
    end
  end
 
