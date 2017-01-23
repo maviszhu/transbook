@@ -16,4 +16,10 @@ Product.delete_all
   Product.create(title: titles[i-1], description:"等待添加商品描述", price: rand(500)+rand(10)/10.0, stock: rand(1000), is_hidden:"true")
 end
 
-puts "添加完成！"
+puts "商品添加完成！"
+
+User.create(email: "may@126.com", password: "123456", password_confirmation: "123456", is_admin: true)
+
+User.create(email: "titi@123.com", password: "123456", password_confirmation: "123456", is_admin: true)
+
+puts "用户添加完成！"
