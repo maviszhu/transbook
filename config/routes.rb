@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :carts
+  resources :carts do
+    member do
+      post :delete_all_items
+      post :delete_item
+      post :add_quantity
+      post :reduce_quantity
+    end
+  end
   resources :products, only: [:show] do
     member do
       post :add_to_cart

@@ -11,7 +11,11 @@
       <% end %>
       <div class="caption">
         <h3><%= product.title %></h3>
-        <p>&yen;<%= product.price %></p>
+        <p>&yen;<%= product.price %>
+          <% if product.stock == 0 %>
+          <span class="label label-default">已售完</span>
+          <% end %>
+        </p>
       </div>
     </div>
   </div>

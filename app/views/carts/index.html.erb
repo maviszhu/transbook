@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-md-12">
     <h2>购物车</h2>
+    <%= link_to("清空", delete_all_items_cart_path(current_cart), class: 'btn btn-warning pull-right', method: :post) %>
+    <br>
     <table class="table">
       <tbody>
         <% current_cart.cart_items.each do |cart_item| %>
@@ -12,8 +14,14 @@
             <%= image_tag("nopic-thumb.jpg") %>
             <% end %>
           </td>
+          <td><%= cart_item.product.title %></td>
           <td><%= cart_item.product.price %></td>
-          <td><%= cart_item.quantity %></td>
+          <td>
+            <%= link_to("-", reduce_quantity_cart_path(current_cart, :item => cart_item), class: "btn btn-xs btn-default", method: :post) %>
+            <%= cart_item.quantity %>
+            <%= link_to("+", add_quantity_cart_path(current_cart, :item => cart_item), class: "btn btn-xs btn-default", method: :post) %>
+          </td>
+          <td><%= link_to("删除", delete_item_cart_path(current_cart, :item => cart_item), class: "btn btn-danger", method: :post) %></td>
         </tr>
         <% end %>
       </tbody>
