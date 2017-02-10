@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       post :add_quantity
       post :reduce_quantity
     end
+    collection do
+      post :checkout
+    end
   end
   resources :products, only: [:show] do
     member do

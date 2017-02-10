@@ -13,7 +13,7 @@ titles = ["手拎包","运动鞋","连衣裙","iPhone7","冬日羊毛袜子","�
 
 Product.delete_all
 (1..10).each do |i|
-  Product.create(title: titles[i-1], description:"等待添加商品描述", price: rand(500)+rand(10)/10.0, stock: rand(1000), is_hidden:"true")
+  Product.create(title: titles[i-1], description:"等待添加商品描述", price: rand(500)+rand(10)/10.0, stock: rand(1000), is_hidden:"false")
 end
 
 puts "商品添加完成！"
