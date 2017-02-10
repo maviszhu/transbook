@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+    @order = Order.new
+  end
+
   def create
     @order = Order.new(order_params)
     @order.user = current_user
@@ -22,7 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by_token(params_[:id])
+    @order = Order.find_by_token(params[:id])
     @product_lists = @order.product_lists
   end
 

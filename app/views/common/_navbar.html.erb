@@ -24,6 +24,8 @@
           <li><%= link_to("管理商品", admin_products_path) %></li>
           <li class="divider"></li>
           <% end %>
+          <li><%= link_to('订单管理', account_orders_path) %></li>
+          <li class="divider"></li>
           <li><%= link_to('登出',destroy_user_session_path, method: :delete) %></li>
         </ul>
       </li>

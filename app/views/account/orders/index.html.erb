@@ -1,0 +1,32 @@
+<div class="row">
+  <h2 class="text-center">历史订单</h2>
+  <% if !@orders.blank? %>
+  <% @orders.each do |order| %>
+  <div class="panel panel-default col-md-10 col-md-push-1">
+    <div class="panel-body">
+      <span><%= order.created_at %>&nbsp;&nbsp;<%= order.token %></span>
+      <span>共<%= order.product_lists.count %>种商品</span>
+      <span class="pull-right">总计<%= order.total %>RMB</span>
+    </div>
+    <table class="table">
+      <tr>
+        <th>商品明细</th>
+        <th>价格</th>
+        <th>数量</th>
+      </tr>
+      <% order.product_lists.each do |product_list| %>
+      <tr>
+        <td><%= product_list.product_name %></td>
+        <td><%= product_list.product_price %></td>
+        <td><%= product_list.quantity %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <% end %>
+<% else %>
+  <div class="col-md-12">
+    订单记录为空。</div>
+  <% end %>
+
+</div>

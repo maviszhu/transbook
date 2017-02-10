@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products
   end
+  namespace :account do
+    resources :orders, only: [:index, :show]
+  end
   get "welcome/index"
   root  "welcome#index"
 end
