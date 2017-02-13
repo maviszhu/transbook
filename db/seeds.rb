@@ -20,6 +20,6 @@ puts "商品添加完成！"
 
 User.create(email: "may@126.com", password: "123456", password_confirmation: "123456", is_admin: true)
 
-User.create(email: "titi@123.com", password: "123456", password_confirmation: "123456", is_admin: true)
+User.create(email: "titi@123.com", password: "123456", password_confirmation: "123456", is_admin: false)
 
 puts "用户添加完成！"

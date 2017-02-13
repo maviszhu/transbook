@@ -29,7 +29,7 @@ class Order < ApplicationRecord
     state :order_cancelled
     state :good_returned
 
-    event :make_payment do
+    event :make_payment, after_commit: :pay! do
       transitions from: :order_placed, to: :paid
     end
 
@@ -37,7 +37,7 @@ class Order < ApplicationRecord
       transitions from: :paid, to: :shipping
     end
 
-    evet :deliver do
+    event :deliver do
       transitions from: :shipping, to: :shipped
     end
 

@@ -52,10 +52,6 @@ class Admin::ProductsController < ApplicationController
  def product_params
    params.require(:product).permit(:title, :description, :price, :stock, :is_hidden, :image)
  end
- def check_admin
-   if !current_user.is_admin
-     redirect_to root_path, alert: "当前账号"+current_user.email+"没有权限！"
-   end
- end
+
 
 end
