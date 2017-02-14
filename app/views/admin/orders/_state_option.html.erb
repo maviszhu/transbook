@@ -1,0 +1,18 @@
+<% case order.aasm_state %>
+<% when "order_placed" then %>
+<p class="label label-warning">未支付</p>
+<%= link_to("取消订单", cancell_admin_order_path(order.token), method: :post, class: "btn btn-warning") %>
+<% when "paid" then %>
+<p class="label label-warning">已支付</p>
+<%= link_to("取消订单", cancell_admin_order_path(order.token), method: :post, class: "btn btn-warning") %>
+<%= link_to("出货", ship_admin_order_path(order.token), method: :post, class: "btn btn-warning") %>
+<% when "shipping" then %>
+<p class="label label-warning">运输中</p>
+<% when "shipped" then %>
+<p class="label label-warning">已到货</p>
+<%= link_to("退货",return_admin_order_path(order.token), method: :post, class: "btn btn-success") %>
+<% when "order_cancelled" then %>
+<p class="label label-warning">已取消</p>
+<% when "good_returned" then %>
+<p class="label label-warning">已退货</p>
+<% end %>

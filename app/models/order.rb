@@ -50,4 +50,12 @@ class Order < ApplicationRecord
     end
   end
 
+  def to_cancell!
+    self.update_columns(is_to_cancell: true)
+  end
+
+  def to_return!
+    self.update_columns(is_to_return: true)
+  end
+
 end

@@ -25,10 +25,20 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :products
-    resources :orders
+    resources :orders do
+      member do
+        post :cancell
+        post :ship
+        post :return
+      end
+    end
   end
   namespace :account do
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show] do
+      member do
+        post :to_cancell_order
+      end
+    end
   end
   get "welcome/index"
   root  "welcome#index"

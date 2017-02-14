@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
 
   def delete_all_items
-    current_cart.cart_items.delete_all
+    current_cart.clean!
     redirect_to :back
     flash[:notice] = "已清空！"
   end

@@ -46,6 +46,8 @@ class OrdersController < ApplicationController
     redirect_to order_path(@order.token), notice: "使用微信成功完成付款！"
   end
 
+
+
   private
   def order_params
     params.require(:order).permit(:billing_name, :billing_address, :shipping_name, :shipping_address)

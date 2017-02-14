@@ -26,11 +26,13 @@
       <% case order.aasm_state %>
       <% when "order_placed" then %>
       <%= link_to("支付","#", method: :post, class: "btn btn-danger") %>
-      <%= link_to("取消订单","#", method: :post, class: "btn btn-warning") %>
+      <%= link_to("取消订单", to_cancell_order_account_order_path(order.token), method: :post, class: "btn btn-warning") %>
       <% when "paid" then %>
-      <%= link_to("取消订单","#", method: :post, class: "btn btn-warning") %>
+      <%= link_to("取消订单",to_cancell_order_account_order_path(order.token), method: :post, class: "btn btn-warning") %>
       <% when "shipped" then %>
       <%= link_to("申请退货","#", method: :post, class: "btn btn-success") %>
+      <% when "order_cancelled" then %>
+      <p class="label label-warning">已取消</p>
       <% end %>
     </div>
   </div>

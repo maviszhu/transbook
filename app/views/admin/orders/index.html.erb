@@ -8,6 +8,12 @@
       <span>共<%= order.product_lists.count %>种商品</span>
       <span><%= link_to("订单详情", admin_order_path(order.token)) %></span>
       <span class="pull-right"><%= order.aasm_state %>,总计<%= order.total %>RMB</span>
+      <% if order.is_to_return  %>
+      <span class="label label-danger">申请退货！</span>
+      <% end %>
+      <% if order.is_to_cancell  %>
+      <span class="label label-danger">申请取消！</span>
+      <% end %>
     </div>
     <table class="table">
       <tr>
@@ -23,6 +29,9 @@
       </tr>
       <% end %>
     </table>
+    <div class="panel-footer">
+      <%= render 'admin/orders/state_option', order: order %>
+    </div>
   </div>
   <% end %>
 <% else %>
