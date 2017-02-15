@@ -9,7 +9,6 @@ class ProductsController < ApplicationController
   end
 
 
-
   def add_to_cart
     if !current_cart.products.include?(@product)
       current_cart.add_product_to_cart(@product)
