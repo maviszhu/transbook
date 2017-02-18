@@ -14,7 +14,9 @@
         <%= render 'common/navbar' %>
       </div>
       <%= render 'common/flashes' %>
-      <%= yield %>
+      <div class="inner">
+        <%= yield %>
+      </div>
     </div>
 
     <%= render 'common/footer' %>

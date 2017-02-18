@@ -1,40 +1,45 @@
-<nav class="navbar navbar-inverse">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="/">JDstore</a>
-  </div>
-  <div class="collapse navbar-collapse" id='bs-example-navbar-collapse-1'>
-    <ul class="nav navbar-nav">
-      <li class="active">
-        <%= link_to("商品", root_path) %>
-      </li>
-    </ul>
+<nav class="navbar navbar-default">
+  <div class="inner">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><%= image_tag('transbook.png') %></a>
+    </div>
+    <div class="collapse navbar-collapse" id='bs-example-navbar-collapse-1'>
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <%= link_to("商品", root_path) %>
+        </li>
+      </ul>
 
-    <ul class="nav navbar-nav pull-right">
-      <li><%= link_to(carts_path) do %>购物车<i class="fa fa-shopping-cart"></i>
-        (<%= current_cart.products.count %>)<% end %>
-      </li>
-      <% if current_user %>
-      <li class="dropdown">
-        <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <%= current_user.email %>
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <% if current_user.is_admin? %>
-          <li><%= link_to("管理商品", admin_products_path) %></li>
-          <li class="divider"></li>
-          <li><%= link_to("管理订单", admin_orders_path) %></li>
-          <li class="divider"></li>
-          <% end %>
-          <li><%= link_to('历史订单', account_orders_path) %></li>
-          <li class="divider"></li>
-          <li><%= link_to('登出',destroy_user_session_path, method: :delete) %></li>
-        </ul>
-      </li>
-    <% else %>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-      <li><%= link_to('注册', new_user_registration_path) %></li>
-      <% end %>
-    </ul>
+      <ul class="nav navbar-nav pull-right">
+        <% unless current_user.present? and current_user.is_admin %>
+        <li><%= link_to(carts_path) do %>购物车<i class="fa fa-shopping-cart"></i>
+          (<%= current_cart.products.count %>)<% end %>
+        </li>
+        <% end %>
+        <% if current_user %>
+        <li class="dropdown">
+          <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.email %>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <% if current_user.is_admin? %>
+            <li><%= link_to("管理商品", admin_products_path) %></li>
+            <li class="divider"></li>
+            <li><%= link_to("管理订单", admin_orders_path) %></li>
+            <li class="divider"></li>
+          <% else %>
+            <li><%= link_to('历史订单', account_orders_path) %></li>
+            <li class="divider"></li>
+            <% end %>
+            <li><%= link_to('登出',destroy_user_session_path, method: :delete) %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to('登入', new_user_session_path) %></li>
+        <li><%= link_to('注册', new_user_registration_path) %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>

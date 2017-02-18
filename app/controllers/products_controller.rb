@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :check_stock, only: [:add_to_cart]
 
+
   def show
     @product = Product.find(params[:id])
     if @product.is_hidden == true
@@ -10,7 +11,7 @@ class ProductsController < ApplicationController
 
 
   def add_to_cart
-    if !current_cart.products.include?(@product)
+    if !current_cart.products.include?(@product) 
       current_cart.add_product_to_cart(@product)
       redirect_to :back
       flash[:notice] = "已加入购物车"
