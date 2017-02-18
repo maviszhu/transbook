@@ -1,4 +1,4 @@
-<div class="innercontent">
+<div class="row">
   <% @products.each do |product| %>
   <div class="col-md-3">
     <div class="thumbnial">
@@ -20,4 +20,9 @@
     </div>
   </div>
   <% end %>
+
+</div>
+
+<div class="pagination text-center">
+  <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 </div>

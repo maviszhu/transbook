@@ -5,9 +5,12 @@
     </div>
     <div class="collapse navbar-collapse" id='bs-example-navbar-collapse-1'>
       <ul class="nav navbar-nav">
-        <li class="active">
-          <%= link_to("商品", root_path) %>
-        </li>
+        <!-- <li class="active">
+          <%#= link_to("商品", root_path) %>
+        </li> -->
+        <% if @IS_INDEX %>
+        <li><%= render 'common/search' %></li>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav pull-right">

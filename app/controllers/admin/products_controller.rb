@@ -1,8 +1,10 @@
 class Admin::ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_admin
+  
 
   def index
+    @IS_INDEX = true
     @products = Product.all.order("updated_at DESC")
   end
 

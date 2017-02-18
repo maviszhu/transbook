@@ -30,6 +30,9 @@ gem "mini_magick"
 gem "font-awesome-rails"
 gem "letter_opener", group: :development
 gem "aasm"
+gem "ransack"
+gem "seo_helper"
+gem "will_paginate-bootstrap"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

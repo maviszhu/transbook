@@ -2,6 +2,15 @@ class ProductsController < ApplicationController
   before_action :check_stock, only: [:add_to_cart]
 
 
+  def index
+    @IS_INDEX = true
+    @q = Product.ransack(params[:q])
+    @products = @q.result.where(:is_hidden => false).paginate(:page => params[:page], :per_page => 5)
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
   def show
     @product = Product.find(params[:id])
     if @product.is_hidden == true
@@ -11,7 +20,7 @@ class ProductsController < ApplicationController
 
 
   def add_to_cart
-    if !current_cart.products.include?(@product) 
+    if !current_cart.products.include?(@product)
       current_cart.add_product_to_cart(@product)
       redirect_to :back
       flash[:notice] = "已加入购物车"
@@ -22,6 +31,7 @@ class ProductsController < ApplicationController
   end
 
 private
+
  def check_stock
    @product = Product.find(params[:id])
    if @product.stock == 0

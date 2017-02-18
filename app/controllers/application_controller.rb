@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  @IS_INDEX = false
 
   helper_method :current_cart
 
@@ -8,7 +9,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, alert: "当前账号"+current_user.email+"没有权限！"
     end
   end
-  
+
   def current_cart
     @current_cart ||= find_cart
   end

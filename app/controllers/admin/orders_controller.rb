@@ -3,6 +3,7 @@ class Admin::OrdersController < ApplicationController
   before_action :check_admin
 
   def index
+    @IS_INDEX = true
     @orders = Order.all.order("created_at DESC")
   end
 

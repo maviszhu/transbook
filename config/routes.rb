@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [:show] do
+  resources :products, only: [:index, :show] do
     member do
       post :add_to_cart
     end
@@ -48,5 +48,5 @@ Rails.application.routes.draw do
   end
 
   get "welcome/index"
-  root  "welcome#index"
+  root  "products#index"
 end
