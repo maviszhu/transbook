@@ -18,25 +18,38 @@
 @import 'bootstrap';
 @import 'font-awesome';
 
-//navbar
-@media (min-width: 768px){
-  .navbar{
-    border-radius: 0px;
-  }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
-.navbar-nav{
-  padding-top: 10px;
-  padding-left: 20px;
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+//navbar
+.navbar{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border:0;
+  z-index: 9999;
+  border-radius: 0px;
+  margin-bottom: 40px;
+  font-size: 12px;
+  letter-spacing: 5px;
+
 }
 .navbar-header{
   margin-left: 0px;
-}
-.navbar-collapse{
-  margin-right: 0px;
-}
-.container-fluid .well{
-  margin-top: 15px;
-  width: 350px;
 }
 .navbar-brand {
   padding: 0px;
@@ -46,15 +59,218 @@
   display: inline-block;
   height:50px;
 }
+.navbar-collapse{
+  margin-right: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.navbar-nav{
+  padding-top: 10px;
+  padding-left: 20px;
+}
+@media (min-width: 768px){
+.navbar-nav > li > a {
+    padding-top: 15px;
+    padding-right: 0px;
+    padding-bottom: 15px;
+}
+}
+.navbar-nav li a:hover{
+  color: #1abc9c !important
+}
 
-//设定内容宽度
+
+//footer
+footer{
+  background-color: #2f2f2f;
+  color: #ffffff;
+  position: relative;//(此auto也可，其他不可)
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+html, body {
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 80%;
+    height: auto !important;
+    height: 100%;
+}
+//body
+body {
+    font:  "Montserrat", sans-serif;
+    line-height: 1.8;
+    color: #545652;
+}
 body .inner, nav .inner, footer .inner{
   width: 936px;
   margin: auto;
 }
+#productlists{
+  margin-top:20px;
+}
 
+.alert{
+  margin-top: -20px;
+}
+
+.carousel-inner img {
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+
+.carousel-caption h3 {
+    color: #fff !important;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+.slide-item {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.sidenav .thumbnail a>img, .thumbnail>img {
+    margin: 0;
+    width: 100%;
+}
+.sidenav .thumbnail {
+    padding: 0 0 15px 0;
+    border: 1px solid #333;
+    border-radius: 0;
+}
+.sidenav .thumbnail p {
+  margin-top: 15px;
+  margin-left:5px;
+  color: #555;
+}
+.slide-list {
+    position: relative;
+}
+ul, ol {
+    -webkit-padding-start: 0px;
+}
+.slide-item {
+    display: inline-block;
+    vertical-align: top;
+}
+.slide-item li {
+    width: 48%;
+    margin-right: 0px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    display: inline-block;
+    vertical-align: top;
+    transition: box-shadow 0.5s;
+}
+
+.slide-item li:nth-child(2n+1) {
+    margin-right: 4%;
+}
+.slide-item .thumbnail {
+  width:100%;
+  height: 180px;
+  padding: 0px;
+  margin-bottom: 0px;
+  border-radius: 0;
+  border: 1px solid #f2f2eb;
+  text-align: center;
+  transition: box-shadow 0.5s;
+}
+.slide-item li:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+.slide-item a:hover{
+  text-decoration: none;
+}
+.item-details {
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #fff;
+}
+.item-details .bookface-img {
+    width: 106px;
+    height: 140px;
+    line-height: 140px;
+    background-size: 100%;
+    position: absolute;
+    left: 35px;
+    bottom: 35px;
+    text-align: center;
+}
+.item-details .bookface-img img {
+    width: 100%;
+    border: 0;
+    vertical-align: bottom;
+}
+
+.item-details .book-price {
+    position: absolute;
+    right: -1px;
+    top: -13px;
+    color: #fff;
+    background: #e76648;
+    font-size: 15px;
+    line-height: 20px;
+    padding: 3px 8px;
+}
+.item-details .book-brief {
+    padding-bottom: 30px;
+}
+.item-details .book-brief h3 {
+    font-size: 20px;
+    color: #494949;
+    font-weight: 500;
+    line-height: 28px;
+    margin-left: 151px;
+    padding: 20px 0 5px;
+}
+.item-details .book-brief p {
+    display: -webkit-box;
+    width: 274px;
+    height: 42px;
+    font-size: 15px;
+    color: #9b9b9b;
+    line-height: 21px;
+    margin-left: 151px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+//search bar
 form#product_search {
     display: inline-block;
     width: 460px;
     padding-top: 10px;
+}
+//
+.devise .well{
+  margin-top: 15px;
+  width: 350px;
+}
+
+@media (min-width: 992px){
+  .col-md-3 {
+      width: 20%;
+      margin-right: 5%
+  }
+}
+.sidenav .well img{
+  width: 100%;
+}
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
 }

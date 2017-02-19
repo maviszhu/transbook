@@ -6,19 +6,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <%= render 'common/navbar' %>
-      </div>
-      <%= render 'common/flashes' %>
+    <%= render 'common/navbar' %>
+
+    <div class="wrapper container-fluid">
       <div class="inner">
+        <%= render 'common/flashes' %>
+
         <%= yield %>
       </div>
-    </div>
 
+    </div>
+    <div class="push"></div>
     <%= render 'common/footer' %>
   </body>
 </html>

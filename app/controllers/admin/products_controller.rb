@@ -1,11 +1,15 @@
 class Admin::ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_admin
-  
+
 
   def index
     @IS_INDEX = true
-    @products = Product.all.order("updated_at DESC")
+    @q = Product.ransack(params[:q])
+    @products = @q.result.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    respond_to do |format|
+      format.html # index.html.erb
+    end
   end
 
   def new

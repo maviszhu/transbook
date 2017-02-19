@@ -20,7 +20,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-     process resize_to_fit: [200, 200]
+     process resize_to_fit: [220, 328]
   end
 
   version :normal do

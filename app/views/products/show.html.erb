@@ -1,33 +1,39 @@
-<div class="innercontent">
-  <div class="col-md-6">
-    <% if @product.image? %>
-    <%= image_tag(@product.image_url(:normal)) %>
-  <% else %>
-    <%= image_tag("nopic-normal.jpg") %>
-    <% end %>
+<div class="row content">
+  <div class="col-md-3 col-sm-3 sidenav">
+    <div class="thumbnail">
+      <% if @product.image? %>
+      <%= image_tag(@product.image_url(:thumb)) %>
+    <% else %>
+      <%= image_tag("30712461.jpg") %>
+      <% end %>
+      <p>
+        <span>数量:</span>
+        <i><%= @product.stock %></i>
+      </p>
+      <p>
+        <span>&yen;</span>
+        <i><%= @product.price %></i>
+      </p>
+    </div>
+
   </div>
-  <div class="col-md-6">
-    <div class="row">
-      <h2><%= @product.title %></h2>
-    </div>
-    <div class="row">
-      <p><%= simple_format(@product.description) %></p>
-    </div>
-    <div class="row">
-      <p>数量:<%= @product.stock %></p>
-      <p>&yen;<%= @product.price %></p>
-      <% if current_user.present? and current_user.is_admin %>
-      <%= link_to(edit_admin_product_path(@product), class: "btn btn-danger pull-right") do %>
-      <i class="fa fa-pencil"></i><% end %>
-    <% else %>
+  <div class="col-md-9 col-sm-9">
+    <h3><%= @product.title %></h3>
+    <hr>
+    <p>《王小波全集（书信集 第9卷）：爱你就像爱生命》讲述了：你要是愿意，我就永远爱你，你要不愿意，\ 我就永远相思。对了，永远“相思”你。从出生到去世涵盖王小波一生的照片，李银河独家授权《王小波全集》终结版。 王小波，1952年5月13日出生于北京；1968—1970年，云南兵团农场职工；1971—1972年，在山东牟平插队，\ 后做民办教师；1972—1973年，北京牛街教学仪器厂工人；1974—1978年，北京西城区半导体厂工人；1978—1982年，\
+      中国人民大学贸易经济系学生；1982—1984年，中国人民大学一分校教师；1984—1988年，美国匹兹堡大学东亚研究中心研究生，\ 获硕士学位；1988—1991年，北京大学社会学所讲师；1991—1992年，中国人民大学会计系讲师；1992—1997年，自由撰稿人，1997年4月11日在北京逝世。
+    </p>
+    <p><%= simple_format(@product.description) %></p>
+    <% if current_user.present? and current_user.is_admin %>
+    <%= link_to(edit_admin_product_path(@product), class: "btn btn-danger pull-right") do %>
+    <i class="fa fa-pencil"></i><% end %>
+  <% else %>
+    <% if @product.stock == 0 %>
+    <%= link_to("加入购物车", "#", method: :post, class: "btn btn-danger disabled pull-right") %>
+  <% else %>
+    <%= link_to("加入购物车", add_to_cart_product_path(@product), method: :post, class: "btn btn-danger pull-right") %>
+    <% end %>
 
-      <% if @product.stock == 0 %>
-      <%= link_to("加入购物车", "#", method: :post, class: "btn btn-danger disabled pull-right") %>
-    <% else %>
-      <%= link_to("加入购物车", add_to_cart_product_path(@product), method: :post, class: "btn btn-danger pull-right") %>
-      <% end %>
-
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

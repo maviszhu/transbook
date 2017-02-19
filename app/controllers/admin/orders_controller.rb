@@ -4,7 +4,11 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @IS_INDEX = true
-    @orders = Order.all.order("created_at DESC")
+    @q = Order.ransack(params[:q])
+    @orders = @q.result.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    respond_to do |format|
+      format.html # index.html.erb
+    end
   end
 
   def show

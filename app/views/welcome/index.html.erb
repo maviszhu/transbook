@@ -1,0 +1,25 @@
+<div class="row slide-list" id="productlists">
+  <ul class="slide-item">
+    <% @products.each do |product| %>
+    <li>
+      <div class="thumbnail">
+        <%= link_to(product_path(product)) do %>
+        <% if product.image? %>
+        <%= image_tag(product.image_url(:thumb), alt: "Product Pic") %>
+      <% else %>
+        <%= image_tag("30712461.jpg", alt: "No Pic") %>
+        <% end %>
+        <% end %>
+        <p>
+          <strong><%= product.title %></strong>
+        </p>
+        <p>&yen;<%= product.price %>
+          <% if product.stock == 0 %>
+          <span class="label label-default">已售完</span>
+          <% end %>
+        </p>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>
