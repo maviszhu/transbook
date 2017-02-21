@@ -1,0 +1,59 @@
+<div class="panel panel-default col-md-12">
+  <div class="panel-body">
+    <span><%= order.token %></span>
+    <span>购买时间：
+      <%= order.created_at.to_s(:long) %></span>
+    <span>购买人：<%= order.user.email %></span>
+    <% if order.is_to_return  %>
+    <span class="label label-danger">申请退货！</span>
+    <% end %>
+    <% if order.is_to_cancell  %>
+    <span class="label label-danger">申请取消！</span>
+    <% end %>
+  </div>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <table class="in_tab">
+            <tbody>
+              <% order.product_lists.each do |product_list| %>
+              <tr>
+                <td>#</td>
+                <td>图片</td>
+                <td>
+                  <p><%= product_list.product_name %></p>
+                  <p>品相：九五品</p>
+                </td>
+                <td><%= product_list.product_price %></td>
+                <td><%= product_list.quantity %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </td>
+        <td>
+          <p>订单总额</p>
+          <p><%= order.total %>
+            <span>RMB</span>
+          </p>
+          <p>(含运费：￥9.0)</p>
+        </td>
+        <td>
+          <p><%= order.aasm_state %></p>
+          <p><%= link_to("订单详情", admin_order_path(order.token)) %></p>
+        </td>
+        <td class="order_options">
+          <%= render 'admin/orders/state_option', order: order %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="panel-footer">
+    <p>收货人信息：<span><%= order.shipping_name %></span>,<span><%= order.shipping_address %></span>
+    </p>
+  </div>
+
+</div>

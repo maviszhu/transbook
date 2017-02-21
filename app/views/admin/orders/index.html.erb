@@ -1,39 +1,8 @@
 <div class="row">
   <h2 class="text-center">所有订单</h2>
+  <hr>
   <% if !@orders.blank? %>
-  <% @orders.each do |order| %>
-  <div class="panel panel-default col-md-10 col-md-push-1">
-    <div class="panel-body">
-      <span><%= order.created_at %>&nbsp;&nbsp;</span>
-      <span>共<%= order.product_lists.count %>种商品</span>
-      <span><%= link_to("订单详情", admin_order_path(order.token)) %></span>
-      <span class="pull-right"><%= order.aasm_state %>,总计<%= order.total %>RMB</span>
-      <% if order.is_to_return  %>
-      <span class="label label-danger">申请退货！</span>
-      <% end %>
-      <% if order.is_to_cancell  %>
-      <span class="label label-danger">申请取消！</span>
-      <% end %>
-    </div>
-    <table class="table">
-      <tr>
-        <th>商品明细</th>
-        <th>价格</th>
-        <th>数量</th>
-      </tr>
-      <% order.product_lists.each do |product_list| %>
-      <tr>
-        <td><%= product_list.product_name %></td>
-        <td><%= product_list.product_price %></td>
-        <td><%= product_list.quantity %></td>
-      </tr>
-      <% end %>
-    </table>
-    <div class="panel-footer">
-      <%= render 'admin/orders/state_option', order: order %>
-    </div>
-  </div>
-  <% end %>
+  <%= render :partial => "admin/orders/order_item", :collection => @orders, :as => :order %>
 <% else %>
   <div class="col-md-12">
     订单记录为空。</div>
