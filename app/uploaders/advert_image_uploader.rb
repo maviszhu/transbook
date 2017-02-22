@@ -19,16 +19,16 @@ class AdvertImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
+  process resize_to_fit: [447, 179]
 
-  process resize_to_fit: [220, 328]
-
-  version :thumb do
-    process resize_to_fit: [110, 164]
+  version :big, if: :is_recommend? do
+    process resize_to_fit: [936, 230]
   end
 
-  version :small_thumb, from_version: :thumb do
-    process resize_to_fit: [55, 82]
-  end
+private
+def is_recommend?
+  product.is_recommend?
+end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
