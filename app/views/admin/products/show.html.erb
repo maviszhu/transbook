@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-6">
     <% if @product.image? %>
-    <%= image_tag(@product.image_url(:normal)) %>
+    <%= image_tag(@product.image.url) %>
   <% else %>
     <%= image_tag("nopic-normal.jpg") %>
     <% end %>

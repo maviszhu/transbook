@@ -34,8 +34,12 @@ class Admin::ProductsController < ApplicationController
    if params[:product][:image] && @product.image
       old_image = Product.find(params[:id]).image
   end
+  if params[:product][:advert_image] && @product.bg_image
+     old_bg_image = Product.find(params[:id]).bg_image
+ end
   if @product.update(product_params)
       old_image.remove! if old_image
+      old_bg_image.remove! if old_bg_image
      redirect_to admin_products_path, notice: "修改成功！"
   else
      render :edit
@@ -56,7 +60,7 @@ class Admin::ProductsController < ApplicationController
  private
 
  def product_params
-   params.require(:product).permit(:title, :description, :price, :stock, :is_hidden, :image)
+   params.require(:product).permit(:title, :description, :price, :stock, :is_hidden, :image, :bg_image, :is_recommend)
  end
 
 

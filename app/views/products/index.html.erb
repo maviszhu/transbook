@@ -1,3 +1,4 @@
+<!-- 轮播图片，展示推荐商品 -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -44,23 +45,27 @@
   </a>
 </div>
 
+<!-- 一般商品列表 -->
 <div class="row slide-list" id="productlists">
   <ul class="slide-item">
     <% @products.each do |product| %>
     <li class="col-md-5 book-item">
       <%= link_to(product_path(product)) do %>
-      <div class="thumbnail">
-
-        <% if product.image? %>
-        <%= image_tag(product.image_url(:thumb), alt: "Product Pic") %>
+      <div class="bookadvert">
+        <% if product.bg_image? %>
+        <p><%= image_tag(product.bg_image_url) %></p>
       <% else %>
-        <%= image_tag("item-img1.jpg", alt: "No Pic") %>
+        <blockquote class='pull-right'><%= product.description %></blockquote>
         <% end %>
 
       </div>
       <div class="item-details">
         <div class="bookface-img">
-          <%= image_tag("30712461.jpg") %>
+          <% if product.image? %>
+          <%= image_tag(product.image_url(:thumb), alt: "Product Pic") %>
+        <% else %>
+          <%= image_tag("30712461.jpg", alt: "No Pic") %>
+          <% end %>
         </div>
         <% if product.stock == 0 %>
         <span class="label label-default">已售完</span>

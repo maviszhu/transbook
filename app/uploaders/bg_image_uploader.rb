@@ -1,4 +1,5 @@
-class AdvertImageUploader < CarrierWave::Uploader::Base
+class BgImageUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -19,16 +20,12 @@ class AdvertImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  process resize_to_fit: [447, 179]
+  process resize_to_fill: [447, 180]
 
-  version :big, if: :is_recommend? do
-    process resize_to_fit: [936, 230]
+  version :big do
+    process resize_to_fill: [936, 230]
   end
 
-private
-def is_recommend?
-  product.is_recommend?
-end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url

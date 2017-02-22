@@ -6,7 +6,7 @@
   <%= f.input :description %>
   <%= f.input :image, label: "上传图书封面" %>
   <%= label_tag("是否作为推荐商品？") %><%= f.collection_radio_buttons :is_recommend, [[true, '是'], [false, '否']], :first, :last %>
-  <%= f.input :advert_image, label: "上传推广图片" %>
+  <%= f.input :bg_image, label: "上传推广图片" %>
   <%= f.input :is_hidden, label: "上架", as: :boolean, checked_value: false, unchecked_value: true %>
 </div>
 
