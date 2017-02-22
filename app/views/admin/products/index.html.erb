@@ -1,33 +1,23 @@
 <div class="col-md-12">
   <div><%= link_to("new", new_admin_product_path, class: "btn btn-primary pull-right") %></div>
-  <h2>所有商品</h2>
+  <h2 class="text-center">所有商品</h2>
+  <hr>
   <table class="table">
     <thead>
       <tr>
         <th>#</th>
-        <th>title</th>
-        <th>description</th>
-        <th>price</th>
-        <th>stock</th>
-        <th>is_hidden</th>
-        <th>updated_at</th>
-        <th colspan="2"></th>
+        <th>商品</th>
+        <th>品相</th>
+        <th>价格</th>
+        <th>库存</th>
+        <th>上架时间</th>
+        <th>状态</th>
+        <th>操作</th>
       </tr>
     </thead>
     <tbody>
-      <% @products.each do |product| %>
-      <tr>
-        <td><%= product.id %></td>
-        <td><%= link_to(product.title, admin_product_path(product)) %></td>
-        <td><%= simple_format(product.description) %></td>
-        <td><%= product.price %></td>
-        <td><%= product.stock %></td>
-        <td><%= product.is_hidden %></td>
-        <td><%= product.updated_at %></td>
-        <td><%= link_to('编辑', edit_admin_product_path(product), class: "btn btn-primary") %></td>
-        <td><%= link_to('删除', admin_product_path(product), method: :delete, data: { confirm: "Are you sure？" }, class: "btn btn-danger") %></td>
-      </tr>
-      <% end %>
+
+      <%= render :partial => 'admin/products/product_item', :collection => @products, :as => :product %>
     </tbody>
   </table>
 </div>

@@ -5,7 +5,7 @@
   <%= f.input :image %>
   <%= f.input :price %>
   <%= f.input :stock %>
-  <%= f.input :is_hidden, label: "展示到前台", as: :boolean, checked_value: false, unchecked_value: true %>
+  <%= f.input :is_hidden, label: "上架", as: :boolean, checked_value: false, unchecked_value: true %>
 </div>
 
 <%= f.submit "完成", class: "btn btn-primary", data: {disable_with: "上传中"} %>

@@ -15,8 +15,9 @@
       <li><%= simple_format(@product.description) %></li>
       <li>价格:&yen;<%= @product.price %></li>
       <li>库存:<%= @product.stock %></li>
-      <li>是否隐藏:<% if @product.is_hidden? %>已隐藏<% else %>
-        已展示
+      <li>是否隐藏:<% if @product.is_hidden? %>未上架<% else %>
+        已上架
         <% end %></li>
     </ul>
   </div>
+</div>

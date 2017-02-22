@@ -1,0 +1,28 @@
+<tr>
+  <td><%= product.id %></td>
+  <td>
+    <div class="product">
+      <div class="product-image">
+        <% if product.image? %>
+        <%= image_tag(product.image_url(:thumb)) %>
+      <% else %>
+        <%= image_tag("nopic-thumb.jpg") %>
+        <% end %>
+      </div>
+      <div class="title"><%= link_to(product.title, admin_product_path(product)) %></div>
+    </div>
+  </td>
+  <td>九五品</td>
+  <td><%= product.price %></td>
+  <td><%= product.stock %></td>
+  <td><%= product.updated_at %></td>
+  <td><%= product.is_hidden %></td>
+  <td>
+    <div class="operate">
+      <p><%= link_to('编辑', edit_admin_product_path(product), class: "btn btn-primary") %>
+        <%= link_to('上架', edit_admin_product_path(product), class: "btn btn-primary") %>
+        <%= link_to('删除', admin_product_path(product), method: :delete, data: { confirm: "Are you sure？" }, class: "btn btn-danger") %>
+      </p>
+    </div>
+  </td>
+</tr>
