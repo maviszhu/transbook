@@ -1,3 +1,88 @@
 // Place all the styles related to the admin::products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.item-header{
+border-top: 2px solid #A4C8E8;
+border-bottom: 1px solid #a4c8e8;
+background: #fff;
+height: 33px;
+line-height: 33px;
+padding: 0 9px;
+font-size: 12px;
+}
+
+.product-id{
+width: 3%;
+}
+.product-name, .product-option{
+width: 20%;
+}
+.product-look, .product-price{
+width: 12%;
+}
+.product-stock, .product-state{
+width: 10%;
+}
+.product-time{
+width: 13%;
+}
+.product-name{
+  text-align: left;
+}
+
+.pro_pic {
+    float: left;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+}
+.pro_pic img{
+  padding:2px;
+  width:100%;
+  vertical-align: middle;
+}
+.product .title{
+  float: left;
+    width: 110px;
+    line-height: 18px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 14px;
+}
+.infobar{
+  width:100%;
+  background: #fff;
+    font-size: 14px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+.infobar .sold, .infobar .onsale, .infobar .not-on{
+  width:25%;
+  display: inline-block;
+  padding:5px 5px 5px 15px;
+}
+
+.infobar .new{
+  font:#fff;
+  padding:5px;
+  float:right;
+  text-align: center;
+  width:12%;
+  border: 1px;
+  border-radius: 0px;
+  background: #1e9364;
+  display: inline-block;
+}
+.infobar .new a {
+    color: #fff;
+    text-decoration: none;
+}

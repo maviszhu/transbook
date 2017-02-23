@@ -1,23 +1,41 @@
 <div class="col-md-12">
-  <div><%= link_to("new", new_admin_product_path, class: "btn btn-primary pull-right") %></div>
-  <h2 class="text-center">所有商品</h2>
+  <h2>我发布的所有商品</h2>
   <hr>
-  <table class="table">
-    <thead>
+  <table class="infobar">
+    <tbody>
       <tr>
-        <th>#</th>
-        <th>商品</th>
-        <th>品相</th>
-        <th>价格</th>
-        <th>库存</th>
-        <th>上架时间</th>
-        <th>状态</th>
-        <th>操作</th>
+        <td class="sold">已售出：<span class="badge">0</span>
+        </td>
+        <td class="onsale">出售中：<span class="badge">12</span>
+        </td>
+        <td class="not-on">未上架：<span class="badge">2</span>
+        </td>
+        <td class="new">
+          <%= link_to(new_admin_product_path) do%>
+          <div>添加新品</div><% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-striped">
+    <thead>
+      <tr class="item-header">
+        <th class="product-id">#</th>
+        <th class="product-name"></th>
+        <th class="product-look">品相</th>
+        <th class="product-price">价格</th>
+        <th class='product-stock'>库存</th>
+        <th class="post-time">上架时间</th>
+        <th class="product-state">状态</th>
+        <th class="product-option">操作</th>
       </tr>
     </thead>
     <tbody>
-
-      <%= render :partial => 'admin/products/product_item', :collection => @products, :as => :product %>
+      <%= render :partial => 'admin/products/product_item', :collection => @products, :as => :product
+          %>
     </tbody>
   </table>
+  <div class="text-center">
+    <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+  </div>
 </div>
