@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12 product">
   <h2>我发布的所有商品</h2>
   <hr>
   <table class="infobar">
@@ -30,7 +30,7 @@
         <th class="product-option">操作</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="product_item">
       <%= render :partial => 'admin/products/product_item', :collection => @products, :as => :product
           %>
     </tbody>

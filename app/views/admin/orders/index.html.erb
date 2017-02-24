@@ -1,11 +1,15 @@
-<div class="row">
-  <h2 class="text-center">所有订单</h2>
+<div class="col-md-12 order">
+  <h2>所有订单</h2>
   <hr>
   <% if !@orders.blank? %>
   <%= render :partial => "admin/orders/order_item", :collection => @orders, :as => :order %>
+  <div class="text-center">
+    <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+  </div>
 <% else %>
-  <div class="col-md-12">
-    订单记录为空。</div>
+  <div class="well">
+    <span class="text-center">订单记录为空。</span>
+  </div>
   <% end %>
 
 </div>

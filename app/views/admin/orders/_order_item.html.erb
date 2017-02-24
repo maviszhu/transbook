@@ -1,50 +1,60 @@
 <div class="panel panel-default col-md-12">
-  <div class="panel-body">
-    <span><%= order.token %></span>
-    <span>购买时间：
+  <div class="panel-header">
+    <span class="order-id">订单id:<%= order.id %></span>
+    <span class="order-time">购买时间：
       <%= order.created_at.to_s(:long) %></span>
-    <span>购买人：<%= order.user.email %></span>
+    <span class="order-user pull-right">购买人：<%= order.user.email %></span>
     <% if order.is_to_return  %>
-    <span class="label label-danger">申请退货！</span>
+    <span class="label label-danger user-apply">申请退货！</span>
     <% end %>
     <% if order.is_to_cancell  %>
-    <span class="label label-danger">申请取消！</span>
+    <span class="label label-danger user-apply">申请取消！</span>
     <% end %>
   </div>
 
-  <table class="table">
+  <table class="panel-body table">
     <tbody>
       <tr>
-        <td>
+        <td class="order-item">
           <table class="in_tab">
             <tbody>
+              <% n = 0 %>
               <% order.product_lists.each do |product_list| %>
               <tr>
-                <td>#</td>
-                <td>图片</td>
-                <td>
-                  <p><%= product_list.product_name %></p>
-                  <p>品相：九五品</p>
+                <% n+=1 %>
+                <td class="order-id"><%= n %></td>
+                <td style="width: 60px;">
+                  <p class="order_pic">
+                    <% if product_list.product_image.present? %>
+                    <%= image_tag(product_list.product_image) %>
+                  <% else %>
+                    <%= image_tag("nopic-thumb.jpg") %>
+                    <% end %>
+                  </p>
                 </td>
-                <td><%= product_list.product_price %></td>
-                <td><%= product_list.quantity %></td>
+                <td class="product-info text-left">
+                  <p class="pro-title"><%= product_list.product_name %></p>
+                  <p class="pro-look">品相：九五品</p>
+                </td>
+                <td class="product_price"><%= product_list.product_price %>&nbsp;元/件</td>
+                <td class="uantity"><%= product_list.quantity %>件</td>
               </tr>
               <% end %>
             </tbody>
           </table>
         </td>
-        <td>
-          <p>订单总额</p>
+        <td class="order-total text-center" style="vertical-align: top;">
+          <p style="padding: 15px 0 15px 0;">订单总额(元)</p>
           <p><%= order.total %>
             <span>RMB</span>
           </p>
           <p>(含运费：￥9.0)</p>
         </td>
-        <td>
-          <p><%= order.aasm_state %></p>
+        <td class="order-state text-center" style="vertical-align: top;">
+          <p style="padding: 15px 0 15px 0;"><%= order.aasm_state %></p>
           <p><%= link_to("订单详情", admin_order_path(order.token)) %></p>
         </td>
-        <td class="order_options">
+        <td class="order_option text-center" style="vertical-align: top; padding: 15px 0 15px 0;">
           <%= render 'admin/orders/state_option', order: order %>
         </td>
       </tr>
