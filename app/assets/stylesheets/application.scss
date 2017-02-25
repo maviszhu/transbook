@@ -27,6 +27,8 @@ $brand-danger: #fb6820;
 $link-color: $gray-base;
 $link-hover-decoration: none;
 $link-hover-color: $brand-success;
+$state-danger-text: $brand-danger;
+$btn-default-bg: transparent;
 // $hr-border: lighten($gray-base, 93.5%);
 
 @import 'bootstrap-sprockets';
@@ -319,4 +321,16 @@ ul, ol {
 .total-price{
   font-size: 17px;
   color:#ff0000;
+  padding-left: 2px;
+  padding-right:2px;
+}
+.item-count{
+  color:#ff0000;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.well{
+  padding-left: 8px;
+  padding-right: 8px;
 }

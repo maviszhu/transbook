@@ -55,6 +55,9 @@ width: 13%;
     margin-left: 0px;
     margin-right: 5px;
     overflow: hidden;
+    display: table-cell;/*图片容器以表格的单元格形式显示*/
+    text-align: center; /* 实现水平居中 */
+    vertical-align: middle;
 }
 .pro_pic img{
   padding:2px;

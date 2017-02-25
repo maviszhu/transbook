@@ -1,3 +1,36 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.pro_pic_big {
+    float: left;
+    display: block;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    position: relative;
+    margin-left: 0px;
+    margin-right: 5px;
+    overflow: hidden;
+    display: table-cell;/*图片容器以表格的单元格形式显示*/
+    text-align: center; /* 实现水平居中 */
+    vertical-align: middle;
+}
+
+.pro_pic_big img{
+  height:100%;
+  padding-top:2px;
+  padding-bottom:2px;
+  vertical-align:middle;
+}
+.order-info .btn{
+  background-color: transparent;
+    color: #545652;
+    border: 0;
+}
+.order-info .btn:hover{
+  background-color: transparent;
+    color: #545652;
+    border: 1px solid #ea8269;
+}

@@ -1,45 +1,60 @@
-<div class="row">
-  <div class="col-md-12">
-    <h2>购物车</h2>
-    <% if !current_cart.cart_items.blank? %>
-    <%= link_to("清空", clean_carts_path, class: 'btn btn-warning pull-right', method: :delete) %>
-    <br>
-    <table class="table">
-      <tbody>
-        <% current_cart.cart_items.each do |cart_item| %>
-        <tr>
-          <td>
-            <% if cart_item.product.image.present? %>
-            <%=  image_tag(cart_item.product.image_url(:thumb)) %>
-          <% else %>
-            <%= image_tag("nopic-thumb.jpg") %>
-            <% end %>
-          </td>
-          <td><%= cart_item.product.title %></td>
-          <td><%= cart_item.product.price %></td>
-          <td>
-            <%= link_to("-", reduce_quantity_cart_item_path(cart_item.product_id), class: "btn btn-xs btn-default", method: :post) %>
-            <%= cart_item.quantity %>
-            <%= link_to("+", add_quantity_cart_item_path(cart_item.product_id), class: "btn btn-xs btn-default", method: :patch) %>
-          </td>
-          <td><%= link_to("删除", cart_item_path(cart_item.product_id), class: "btn btn-danger", method: :delete) %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <br>
-    <div class="total clearfix">
-      <span class="pull-right">总计<%= render_cart_total_price(current_cart) %>RMB
-      </span>
-    </div>
-    <hr>
-    <div class="checkout clearfix">
-      <%= link_to("确认结账", checkout_carts_path, method: :post, class:"btn btn-danger btn-lg pull-right") %>
-    </div>
+<div class="col-md-12">
+  <h2>购物车</h2>
+  <hr>
+  <% if !current_cart.cart_items.blank? %>
+  <div class="well order-info">
+    <span>共有<span class="item-count"><%= current_cart.cart_items.count %></span>件商品<span>
+        <%= link_to("清空", clean_carts_path, class: 'btn btn-sm pull-right', method: :delete) %></div>
 
-  <% else %>
-    <p class="text-center">您还没有添加商品</p>
-    <% end %>
+      <table class="table">
+        <tbody>
+          <% current_cart.cart_items.each do |cart_item| %>
+          <tr>
+            <td>
+              <%= link_to(product_path(cart_item.product)) do %>
 
-  </div>
-</div>
+              <div class="pro_pic_big">
+                <% if cart_item.product.image.present? %>
+                <%=  image_tag(cart_item.product.image_url(:thumb)) %>
+              <% else %>
+                <%= image_tag("nopic-thumb.jpg") %>
+                <% end %>
+              </div>
+
+              <div class="title">
+                <p class="pro-title"><%= cart_item.product.title %></p>
+              </div>
+
+              <% end %>
+            </td>
+            <td>
+              <p class="pro-look">九五品</p>
+            </td>
+            <td><%= cart_item.product.price %>&nbsp;元/件</td>
+            <td>
+              <%= link_to("-", reduce_quantity_cart_item_path(cart_item.product_id), class: "btn btn-xs btn-default", method: :post) %>
+              <%= cart_item.quantity %>
+              <%= link_to("+", add_quantity_cart_item_path(cart_item.product_id), class: "btn btn-xs btn-default", method: :patch) %>
+            </td>
+            <td><%= link_to(cart_item_path(cart_item.product_id), class: "btn-sm btn-default pull-right", method: :delete) do %>
+              <i class='fa fa-trash text-danger' style='font-size:20px;'></i><% end %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <div class="total clearfix">
+        <span class="pull-right">总计&nbsp;<strong class="total-price"><%= render_cart_total_price(current_cart) %></strong>&nbsp;RMB
+        </span>
+      </div>
+      <div class="checkout clearfix">
+        <%= link_to("确认结账", checkout_carts_path, method: :post, class:"btn btn-danger btn-lg pull-right") %>
+      </div>
+
+    <% else %>
+      <div class="well">
+        <p class="text-center">您还没有添加商品</p>
+      </div>
+      <% end %>
+
+    </div>

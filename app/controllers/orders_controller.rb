@@ -10,21 +10,29 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.total = current_cart.total_price
 
-    if @order.save
-      current_cart.cart_items.each do |cart_item|
-        @product_list = ProductList.new
-        @product_list.order = @order
-        @product_list.product_name = cart_item.product.title
-        @product_list.product_price = cart_item.product.price
-        @product_list.quantity = cart_item.quantity
-        @product_list.product_iamge = cart_item.product.image.url.thumb
-        @product_list.save
-      end
-      current_cart.clean!
-      OrderMailer.notify_order_placed(@order).deliver!
-      redirect_to order_path(@order.token)
+    if current_cart.cart_items.count == 0
+      render :new
     else
-      render 'carts/checkout'
+
+      if @order.save
+        current_cart.cart_items.each do |cart_item|
+          @product_list = ProductList.new
+          @product_list.order = @order
+          @product_list.product_name = cart_item.product.title
+          @product_list.product_price = cart_item.product.price
+          @product_list.quantity = cart_item.quantity
+          if cart_item.product.image?
+            @product_list.product_image = cart_item.product.image.small_thumb.url
+          end
+          @product_list.save
+        end
+        current_cart.clean!
+        OrderMailer.notify_order_placed(@order).deliver!
+        redirect_to order_path(@order.token)
+      else
+        render 'carts/checkout'
+      end
+
     end
   end
 
