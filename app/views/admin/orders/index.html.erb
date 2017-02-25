@@ -4,7 +4,7 @@
   <% if !@orders.blank? %>
   <%= render :partial => "admin/orders/order_item", :collection => @orders, :as => :order %>
   <div class="text-center">
-    <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+    <%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
   </div>
 <% else %>
   <div class="well">

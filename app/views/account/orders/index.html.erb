@@ -1,24 +1,41 @@
 <div class="row">
-  <h2 class="text-center">历史订单</h2>
+  <h2>历史订单</h2>
+  <hr>
   <% if !@orders.blank? %>
   <% @orders.each do |order| %>
-  <div class="panel panel-default col-md-10 col-md-push-1">
-    <div class="panel-body">
-      <span><%= order.created_at %>&nbsp;&nbsp;<%= order.token %></span>
+  <div class="panel panel-default">
+    <div class="panel-header">
+      <span class="order-time">
+        <%= order.created_at.to_s(:long) %></span>
+      <span class="order-id"><%= order.token %></span>
       <span>共<%= order.product_lists.count %>种商品</span>
-      <span class="pull-right"><%= order.aasm_state %>,总计<%= order.total %>RMB</span>
+      <span class="label"><%= order.aasm_state %></span>
+      <span class="pull-right">总计&nbsp;<strong class="total-price"><%= order.total %>
+        </strong>&nbsp;RMB</span>
     </div>
     <table class="table">
       <tr>
         <th>商品明细</th>
-        <th>价格</th>
-        <th>数量</th>
+        <th class="product_price">价格</th>
+        <th class="quantity">数量</th>
       </tr>
       <% order.product_lists.each do |product_list| %>
       <tr>
-        <td><%= product_list.product_name %></td>
-        <td><%= product_list.product_price %></td>
-        <td><%= product_list.quantity %></td>
+        <td>
+          <div class="pro_pic">
+            <% if product_list.product_image.present? %>
+            <%= image_tag(product_list.product_image) %>
+          <% else %>
+            <%= image_tag("nopic-thumb.jpg") %>
+            <% end %>
+          </div>
+          <div class="title">
+            <p class="pro-title"><%= product_list.product_name %></p>
+            <p class="pro-look">品相：九五品</p>
+          </div>
+        </td>
+        <td class="product_price"><%= product_list.product_price %></td>
+        <td class="quantity"><%= product_list.quantity %></td>
       </tr>
       <% end %>
     </table>
@@ -37,9 +54,13 @@
     </div>
   </div>
   <% end %>
+  <div class="text-center">
+    <%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
+  </div>
 <% else %>
-  <div class="col-md-12">
-    订单记录为空。</div>
+  <div class="well">
+    <span class="text-center">订单记录为空。</span>
+  </div>
   <% end %>
 
 </div>

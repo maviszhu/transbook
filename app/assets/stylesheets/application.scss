@@ -23,7 +23,7 @@ $font-size-h2: floor(($font-size-base * 2.3));
 $hr-border: #ddd;
 $brand-primary: #1e9364;
 $brand-success: #00449F;
-$brand-danger: #ff0000;
+$brand-danger: #fb6820;
 $link-color: $gray-base;
 $link-hover-decoration: none;
 $link-hover-color: $brand-success;
@@ -37,7 +37,7 @@ hr{
   margin-top: 5px;
 }
 .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
-    padding: 15px 0 15px 0;
+    padding: 15px 8px 15px 8px;
     line-height: 1.42857143;
     vertical-align: middle;
     border-top: 1px solid #ddd;
@@ -61,7 +61,7 @@ hr{
   border-radius: 0px;
   margin-bottom: 40px;
   font-size: 12px;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
 
 }
 .navbar-header{
@@ -314,4 +314,9 @@ ul, ol {
 .panel-footer {
     padding: 10px 8px;
     font-size: 14px;
+}
+
+.total-price{
+  font-size: 17px;
+  color:#ff0000;
 }
