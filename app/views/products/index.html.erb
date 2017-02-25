@@ -1,37 +1,23 @@
+<% if @recommend_products.count > 0 %>
 <!-- 轮播图片，展示推荐商品 -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <% @recommend_products.each_with_index do |recommend_product, index| %>
+    <li data-target="#myCarousel" data-slide-to=<%= index %> class="<%= index == 1 ? 'active' : 'none' %>"></li>
+    <% end %>
   </ol>
 
   <!-- Wrapper for slides -->
+
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <%= image_tag("carousel1.jpg", alt: "New York") %>
-      <div class="carousel-caption">
-        <h3>New York</h3>
-        <p>The atmosphere in New York is lorem ipsum.</p>
-      </div>
+    <% @recommend_products.each_with_index do |recommend_product, index| %>
+    <div class="item <%= index == 1 ? 'active' : '' %>">
+      <%= link_to(product_path(recommend_product)) do %>
+      <%= image_tag(recommend_product.bg_image.big.url, alt: "New York") %>
+      <% end %>
     </div>
-
-    <div class="item">
-      <%= image_tag("carousel2.jpg", alt: "New York") %>
-      <div class="carousel-caption">
-        <h3>Chicago</h3>
-        <p>Thank you, Chicago - A night we won't forget.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <%= image_tag("carousel3.jpg", alt: "New York") %>
-      <div class="carousel-caption">
-        <h3>LA</h3>
-        <p>Even though the traffic was a mess, we had the best time.</p>
-      </div>
-    </div>
+    <% end %>
   </div>
 
   <!-- Left and right controls -->
@@ -45,6 +31,8 @@
   </a>
 </div>
 
+<% end %>
+
 <!-- 一般商品列表 -->
 <div class="row slide-list" id="productlists">
   <ul class="slide-item">
@@ -55,11 +43,13 @@
         <% if product.bg_image? %>
         <p><%= image_tag(product.bg_image_url) %></p>
       <% else %>
-        <blockquote class='pull-right'><%= product.description %></blockquote>
+        <blockquote class='pull-right'><%= simple_format(truncate(product.description, length: 15)) %></blockquote>
         <% end %>
-
       </div>
+      <% end %>
+
       <div class="item-details">
+        <%= link_to(product_path(product)) do %>
         <div class="bookface-img">
           <% if product.image? %>
           <%= image_tag(product.image_url(:thumb), alt: "Product Pic") %>
@@ -67,6 +57,7 @@
           <%= image_tag("30712461.jpg", alt: "No Pic") %>
           <% end %>
         </div>
+        <% end %>
         <% if product.stock == 0 %>
         <span class="label label-default">已售完</span>
       <% else %>
@@ -74,20 +65,33 @@
         <% end %>
         <div class="book-brief">
           <h3>
-            <%= product.title %>
+            <%= link_to(product.title, product_path(product))  %>
           </h3>
           <div class="book-quote">
-            <p><%= product.description %></p>
-          </div>
-
+            <p style="font-size: 14px;">
+              <span class="author">王小波</span>
+              <span class="publisher">文学出版社</span>
+            </p>
+            <p>
+              <span>九五品</span>
+              <span>库存：<%= product.stock %></i>
+            </span>
+          </p>
+          <% unless current_user.present? and current_user.is_admin %>
+          <%= link_to add_to_cart_product_path(product), :method => :post, class: "btn pull-right", :remote => true do %>
+          <i class="fa fa-shopping-cart text-center"></i>
+          <% end %>
+          <% end %>
         </div>
+
       </div>
-      <% end %>
-    </li>
-    <% end %>
-  </ul>
+    </div>
+
+  </li>
+  <% end %>
+</ul>
 </div>
 
 <div class="text-center">
-  <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+<%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 </div>

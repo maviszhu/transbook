@@ -36,4 +36,10 @@ class Admin::OrdersController < ApplicationController
     OrderMailer.notify_return_order(@order).deliver!
     redirect_to admin_orders_path, warning: "订单进入退货流程！"
   end
+
+  def destroy
+    @order = Order.find_by_token(params[:id])
+    @order.destroy
+  end
+
 end

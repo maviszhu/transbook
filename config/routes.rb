@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   end
 
   namespace :account do
-    resources :orders, only: [:index, :show] do
+    resources :orders, only: [:index, :show, :destroy] do
       member do
         post :to_cancell_order
       end

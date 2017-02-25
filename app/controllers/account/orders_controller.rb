@@ -19,4 +19,9 @@ class Account::OrdersController < ApplicationController
     redirect_to account_orders_path
   end
 
+  def destroy
+    @order = Order.find_by_token(params[:id])
+    @order.destroy
+  end
+
 end

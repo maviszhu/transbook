@@ -13,6 +13,7 @@
 <%= link_to("退货",return_admin_order_path(order.token), method: :post, class: "btn btn-success") %>
 <% when "order_cancelled" then %>
 <p class="label label-warning">已取消</p>
+<%= link_to("删除订单", admin_order_path(order.token), remote: true, method: :delete, class: "btn btn-success") %>
 <% when "good_returned" then %>
 <p class="label label-warning">已退货</p>
 <% end %>

@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
     @IS_INDEX = true
     @q = Product.ransack(params[:q])
     @products = @q.result.where(:is_hidden => false).paginate(:page => params[:page], :per_page => 8)
+    @recommend_products = Product.where(:is_hidden => false).where(:is_recommend => true)
     respond_to do |format|
       format.html # index.html.erb
     end

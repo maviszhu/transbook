@@ -20,10 +20,10 @@ class BgImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  process resize_to_fill: [447, 180]
+  process resize_to_fit: [496, 200]
 
   version :big do
-    process resize_to_fill: [936, 230]
+    process resize_to_fit: [1200, 295]
   end
 
 

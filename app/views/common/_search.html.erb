@@ -3,30 +3,30 @@
   <%= search_form_for [:admin,@q] do |f| %>
   <div class="input-group">
     <%= f.search_field :title_cont, class:"form-control", placeholder: "书名" %>
-    <span class="input-group-btn">
-      <%= f.button :submit, class: "btn btn-default" do %>
+    <!-- <span class="input-group-btn">
+      <% f.button :submit, class: "btn btn-default pull-right" do %>
       <i class="fa fa-search"></i><% end %>
-    </span>
+    </span> -->
   </div>
   <% end %>
   <% elsif request.original_fullpath.include?'/admin/orders' %>
   <%= search_form_for [:admin,@q] do |f| %>
   <div class="input-group">
     <%= f.search_field :billing_name_cont, class:"form-control", placeholder: "订购人" %>
-    <span class="input-group-btn">
-      <%= f.button :submit, class: "btn btn-default" do %>
+    <!-- <span class="input-group-btn">
+      <% f.button :submit, class: "btn btn-default" do %>
       <i class="fa fa-search"></i><% end %>
-    </span>
+    </span> -->
   </div>
   <% end %>
   <% elsif request.original_fullpath.split('?')[0] == '/products' or request.original_fullpath.split('?')[0] == '/' %>
   <%= search_form_for @q do |f| %>
   <div class="input-group">
     <%= f.search_field :title_cont, class:"form-control", placeholder: "书名" %>
-    <span class="input-group-btn">
-      <%= f.button :submit, class: "btn btn-default" do %>
+    <!-- <span class="input-group-btn">
+      <% f.button :submit, class: "btn btn-default" do %>
       <i class="fa fa-search"></i><% end %>
-    </span>
+    </span> -->
   </div>
   <% end %>
   <% end %>

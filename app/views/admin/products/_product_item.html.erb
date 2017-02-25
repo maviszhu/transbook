@@ -9,14 +9,21 @@
         <%= image_tag("nopic-thumb.jpg") %>
         <% end %>
       </div>
-      <div class="title"><%= link_to(product.title, admin_product_path(product)) %></div>
+      <div class="title">
+        <%= link_to(product.title, admin_product_path(product)) %>
+        <% if product.is_recommend %>
+        <p>
+          <span class="label label-warning">推荐商品</span>
+        </p>
+        <% end %>
+      </div>
     </div>
   </td>
   <td>九五品</td>
   <td><%= product.price %></td>
   <td><%= product.stock %></td>
   <td><%= product.updated_at %></td>
-  <td><%= product.is_hidden %></td>
+  <td><%= trans_is_hidden(product.is_hidden) %></td>
   <td>
     <div class="operate">
       <p><%= link_to('编辑', edit_admin_product_path(product), class: "btn btn-success btn-sm") %>
