@@ -14,7 +14,13 @@
     <% @recommend_products.each_with_index do |recommend_product, index| %>
     <div class="item <%= index == 1 ? 'active' : '' %>">
       <%= link_to(product_path(recommend_product)) do %>
-      <%= image_tag(recommend_product.bg_image.big.url, alt: "New York") %>
+      <!-- <% image_tag(recommend_product.bg_image.big.url, alt: "New York") %> -->
+      <div class="slide">
+        <%= image_tag(recommend_product.image.thumb.url) %>
+        <p class="carousel-caption">
+          <%= recommend_product.title %>
+        </p>
+      </div>
       <% end %>
     </div>
     <% end %>

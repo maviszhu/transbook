@@ -54,11 +54,13 @@ hr{
     margin-left: 0px;
     margin-right: 0px;
 }
+
 //navbar
 .navbar{
   padding-top: 15px;
   padding-bottom: 15px;
-  border:0;
+  background-color: #fafafa;
+  border-bottom: 1px solid #ebebeb;
   z-index: 9999;
   border-radius: 0px;
   margin-bottom: 40px;
@@ -116,11 +118,13 @@ html, body {
     height: auto !important;
     height: 100%;
 }
+
 //body
 body {
     font:  "Montserrat", sans-serif;
     line-height: 1.8;
     color: #545652;
+    background-color: #f4f7f8;
 }
 body .inner, nav .inner, footer .inner{
   width: 936px;
@@ -157,18 +161,17 @@ footer .inner{
 }
 
 .sidenav .thumbnail a>img, .thumbnail>img {
-    margin: 0;
-    width: 100%;
+    margin: 5px auto;
+    width: 80%;
 }
 .sidenav .thumbnail {
     padding: 0 0 15px 0;
-    border: 1px solid #333;
     border-radius: 0;
+    background: #fff;
 }
 .sidenav .thumbnail p {
   margin-top: 15px;
   margin-left:5px;
-  color: #555;
 }
 .slide-list {
     position: relative;
@@ -205,12 +208,15 @@ ul, ol {
   min-height: 180px;
   padding: 0px;
   margin-bottom: 0px;
-  background-color: #F7F1ED;
+  background-color: #ececec;
   border-radius: 0;
-  border: 1px solid #f2f2eb;
+  border: 1px solid #e2e2e2;
   text-align: center;
   transition: box-shadow 0.5s;
   display: block;
+  & img{
+    width:100%
+  }
 }
 .slide-item blockquote{
   padding: 40px 10px;
@@ -226,6 +232,29 @@ ul, ol {
 }
 .slide-item a:hover{
   text-decoration: none;
+}
+
+.carousel {
+    background-color: #fff;
+    margin-top: -15px;
+}
+.carousel-inner .item{
+  height: 200px;
+}
+.carousel-inner img {
+    height: 140px;
+    width: 106px;
+    position: absolute;
+    left: 200px;
+    margin-top: 20px;
+
+}
+
+.carousel-caption {
+  padding-bottom: 100px;
+      font-size: 20px;
+      color: #9b9b9b;
+      text-shadow: none;
 }
 .item-details {
     border-left: 1px solid #e8e8e8;
@@ -250,15 +279,16 @@ ul, ol {
     border: 0;
     vertical-align: bottom;
 }
-
-.item-details .book-price {
-    position: absolute;
-    right: -1px;
-    top: -13px;
+.book-price {
     color: #fff;
     background: #e76648;
     font-size: 15px;
     line-height: 20px;
+}
+.item-details .book-price {
+    position: absolute;
+    right: -1px;
+    top: -13px;
     padding: 3px 8px;
 }
 .item-details .book-brief {

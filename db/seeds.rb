@@ -9,11 +9,12 @@
 puts "自动向数据库增加10条测试商品"
 puts "Product，当前字段：title，description，price，stock，is_hidden"
 
-titles = ["手拎包","运动鞋","连衣裙","iPhone7","冬日羊毛袜子","蓝牙耳机","无线鼠标","细高跟高跟鞋","保湿乳液","护手霜"]
+titles = ["人月神话 40周年中文纪念版","你只是看起来很努力","站在两个世界的边缘","礼物","异类：不一样的成功启示录",
+  "少有人走的路","这一生，静待时光检验","谁说菜鸟不会数据分析","经济学","影响力"]
 
 Product.delete_all
 (1..10).each do |i|
-  Product.create(title: titles[i-1], description:"等待添加商品描述", price: rand(500)+rand(10)/10.0, stock: rand(1000), is_hidden:"false")
+  Product.create(title: titles[i-1], description:"等待添加商品描述", price: rand(500), stock: 1, is_hidden:"false")
 end
 
 puts "商品添加完成！"
