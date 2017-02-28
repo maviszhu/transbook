@@ -34,7 +34,6 @@
                 </td>
                 <td class="product-info text-left">
                   <p class="pro-title"><%= product_list.product_name %></p>
-                  <p class="pro-look">品相：九五品</p>
                 </td>
                 <td class="product_price"><%= product_list.product_price %>&nbsp;元/件</td>
                 <td class="quantity"><%= product_list.quantity %>件</td>
@@ -48,11 +47,11 @@
           <p><%= order.total %>
             <span>RMB</span>
           </p>
-          <p>(含运费：￥9.0)</p>
+          <p>(含运费：￥0.0)</p>
         </td>
         <td class="order-state text-center" style="vertical-align: top;">
-          <p style="padding: 15px 0 15px 0;"><%= order.aasm_state %></p>
-          <p><%= link_to("订单详情", admin_order_path(order.token)) %></p>
+          <p style="margin: 15px 0 15px 0;">
+            <%= link_to("订单详情", admin_order_path(order.token)) %></p>
         </td>
         <td class="order_option text-center" style="vertical-align: top; padding: 15px 0 15px 0;">
           <%= render 'admin/orders/state_option', order: order %>

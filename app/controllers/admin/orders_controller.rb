@@ -40,6 +40,7 @@ class Admin::OrdersController < ApplicationController
   def destroy
     @order = Order.find_by_token(params[:id])
     @order.destroy
+    redirect_to admin_orders_path
   end
 
 end

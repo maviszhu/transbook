@@ -17,9 +17,12 @@
       <!-- <% image_tag(recommend_product.bg_image.big.url, alt: "New York") %> -->
       <div class="slide">
         <%= image_tag(recommend_product.image.thumb.url) %>
-        <p class="carousel-caption">
-          <%= recommend_product.title %>
-        </p>
+        <div class="carousel-caption">
+          <p class='text-left'><%= recommend_product.title %></p>
+          <blockquote class="blockquote  text-left">
+            <%= simple_format(truncate(recommend_product.description, length: 80)) %>
+          </blockquote>
+        </div>
       </div>
       <% end %>
     </div>
@@ -49,7 +52,9 @@
         <% if product.bg_image? %>
         <p><%= image_tag(product.bg_image_url) %></p>
       <% else %>
-        <blockquote class='pull-right'><%= simple_format(truncate(product.description, length: 15)) %></blockquote>
+        <!-- <blockquote class='pull-right'> -->
+        <%= simple_format(truncate(product.description, length: 120), class: "quote text-center") %>
+        <!-- </blockquote> -->
         <% end %>
       </div>
       <% end %>
@@ -60,7 +65,7 @@
           <% if product.image? %>
           <%= image_tag(product.image_url(:thumb), alt: "Product Pic") %>
         <% else %>
-          <%= image_tag("30712461.jpg", alt: "No Pic") %>
+          <%= image_tag("nopic-thumb.jpg", alt: "No Pic") %>
           <% end %>
         </div>
         <% end %>
@@ -75,11 +80,11 @@
           </h3>
           <div class="book-quote">
             <p style="font-size: 14px;">
-              <span class="author">王小波</span>
-              <span class="publisher">文学出版社</span>
+              <span class="author"><%= product.writer %></span>
+              <span class="publisher"><%= product.publisher %></span>
             </p>
             <p>
-              <span>九五品</span>
+              <span><%= product.quality %></span>
               <span>库存：<%= product.stock %></i>
             </span>
           </p>

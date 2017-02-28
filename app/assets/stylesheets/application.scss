@@ -15,7 +15,7 @@
  */
 $gray-base: #545652;
 $body-bg: #E8E8E8;
-$table-bg: #F6F1ED;
+$table-bg: #fff;
 $table-bg-accent: #f9f9f9;
 $font-size-base: 12px;
 $font-size-h1: floor(($font-size-base * 3));
@@ -161,17 +161,19 @@ footer .inner{
 }
 
 .sidenav .thumbnail a>img, .thumbnail>img {
-    margin: 5px auto;
+    margin: 15px auto;
     width: 80%;
 }
 .sidenav .thumbnail {
-    padding: 0 0 15px 0;
     border-radius: 0;
     background: #fff;
+    border: 0;
+}
+.sidenav .thumbnail .book-price{
+  background-color: #979797;
 }
 .sidenav .thumbnail p {
-  margin-top: 15px;
-  margin-left:5px;
+  margin-top: 5px;
 }
 .slide-list {
     position: relative;
@@ -208,7 +210,7 @@ ul, ol {
   min-height: 180px;
   padding: 0px;
   margin-bottom: 0px;
-  background-color: #ececec;
+  background-color: #f8f8f8;
   border-radius: 0;
   border: 1px solid #e2e2e2;
   text-align: center;
@@ -218,9 +220,24 @@ ul, ol {
     width:100%
   }
 }
+.quote:before, .quote:after{
+  content: "\"";
+  color: #979797;
+}
+.quote{
+  color: #979797;
+  margin-top: 40px;
+  font-size: 14px;
+  font-style:italic;
+  padding: 0 15px;
+}
 .slide-item blockquote{
-  padding: 40px 10px;
-  margin-top: 20px;
+  padding: 5px 10px;
+margin-top: 45px;
+margin-bottom: 20px;
+}
+.slide-item blockquote p {
+  color: #979797;
 }
 .slide-item li:hover {
     box-shadow: 5px 0px 40px rgba(0,0,0, .2);
@@ -238,23 +255,42 @@ ul, ol {
     background-color: #fff;
     margin-top: -15px;
 }
+.carousel-indicators .active{
+  background-color: #f9f9f9;
+      border: 1px solid #ddd;
+}
+.carousel-indicators li{
+    background-color: #f9f9f9;
+}
 .carousel-inner .item{
   height: 200px;
 }
 .carousel-inner img {
-    height: 140px;
     width: 106px;
     position: absolute;
     left: 200px;
     margin-top: 20px;
 
 }
-
+@media screen and (min-width: 768px){
 .carousel-caption {
-  padding-bottom: 100px;
+    left: 40%;
+    width: 450px;
+}
+}
+.carousel-caption {
+  padding-bottom: 20px;
       font-size: 20px;
       color: #9b9b9b;
       text-shadow: none;
+}
+.carousel-caption > p{
+  margin-bottom: 10px;
+  color: #545652;
+}
+.carousel-caption blockquote{
+      border-left: 5px solid gray;
+          padding: 0px 17px;
 }
 .item-details {
     border-left: 1px solid #e8e8e8;
@@ -388,4 +424,21 @@ ul, ol {
 }
 .searchbar .form-control:focus{
 background-color:transparent;
+}
+.pagination > .active > span{
+  background-color: #fff;
+  color: #616161;
+}
+.content .pro_details{
+  width: 180px;
+  margin-right: 56px;
+}
+.content .pro_comment{
+  width: 700px;
+}
+p > strong{
+  font-size: 14px;
+}
+.content .book_title{
+  margin: 10px 0;
 }
