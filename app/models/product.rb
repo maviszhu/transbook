@@ -9,4 +9,12 @@ class Product < ApplicationRecord
     product.is_recommend
   end
 
+  def publish!
+    self.update_columns(is_hidden: false)
+  end
+
+  def hide!
+    self.update_columns(is_hidden: true)
+  end
+
 end

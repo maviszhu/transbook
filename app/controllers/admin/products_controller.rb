@@ -56,6 +56,18 @@ class Admin::ProductsController < ApplicationController
    @product = Product.find(params[:id])
  end
 
+def publish
+  @product = Product.find(params[:id])
+  @product.publish!
+  redirect_to :back
+end
+
+def hide
+  @product = Product.find(params[:id])
+  @product.hide!
+  redirect_to :back
+end
+
 
  private
 

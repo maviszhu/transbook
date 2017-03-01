@@ -2,22 +2,28 @@
   <div class="row">
     <%= link_to("编辑", edit_admin_product_path(@product), class: "btn btn-primary pull-right") %>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-3 col-sm-3 sidenav">
     <% if @product.image? %>
     <%= image_tag(@product.image.url) %>
   <% else %>
     <%= image_tag("nopic-normal.jpg") %>
     <% end %>
   </div>
-  <div class="col-md-6">
-    <h2><%= @product.title %></h2>
+  <div class="col-md-9 col-sm-9">
+    <h2><%= @product.title %>
+    </h2>
+    <p class="label label-warning"><% if @product.is_hidden? %>未上架<% else %>
+      已上架
+      <% end %></p>
     <ul class="list-unstyled">
-      <li><%= simple_format(@product.description) %></li>
-      <li>价格:&yen;<%= @product.price %></li>
-      <li>库存:<%= @product.stock %></li>
-      <li>是否隐藏:<% if @product.is_hidden? %>未上架<% else %>
-        已上架
-        <% end %></li>
+
+      <li>价格:&nbsp;&nbsp;<span>&yen;<%= @product.price %></span>
+      </li>
+      <li>数量:&nbsp;&nbsp;<%= @product.stock %></li>
     </ul>
+    <div class="comment">
+      <h3><%= @product.coment_title %></h3>
+      <hr>
+      <%= simple_format(@product.description) %></div>
   </div>
 </div>

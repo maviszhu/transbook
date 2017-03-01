@@ -2,6 +2,7 @@
   <td><%= product.id %></td>
   <td>
     <div class="product">
+      <%= link_to(admin_product_path(product)) do %>
       <div class="pro_pic">
         <% if product.image? %>
         <%= image_tag(product.image_url(:thumb)) %>
@@ -9,6 +10,7 @@
         <%= image_tag("nopic-thumb.jpg") %>
         <% end %>
       </div>
+      <% end %>
       <div class="title">
         <%= link_to(product.title, admin_product_path(product)) %>
         <% if product.is_recommend %>
@@ -19,7 +21,7 @@
       </div>
     </div>
   </td>
-  <td>九五品</td>
+  <td><%= product.quality %></td>
   <td><%= product.price %></td>
   <td><%= product.stock %></td>
   <td><%= product.updated_at %></td>
@@ -27,7 +29,11 @@
   <td>
     <div class="operate">
       <p><%= link_to('编辑', edit_admin_product_path(product), class: "btn btn-success btn-sm") %>
-        <%= link_to('上架', edit_admin_product_path(product), class: "btn btn-primary btn-sm") %>
+        <% if product.is_hidden %>
+        <%= link_to('上架', publish_admin_product_path(product), method: :post, class: "btn btn-primary btn-sm") %>
+      <% else %>
+        <%= link_to('下架', hide_admin_product_path(product), method: :post, class: "btn btn-warning btn-sm") %>
+        <% end %>
         <%= link_to('删除', admin_product_path(product), method: :delete, data: { confirm: "Are you sure？" }, class: "btn btn-danger btn-sm") %>
       </p>
     </div>
