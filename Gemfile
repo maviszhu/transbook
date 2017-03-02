@@ -33,6 +33,8 @@ gem "aasm"
 gem "ransack"
 gem "seo_helper"
 gem "will_paginate-bootstrap"
+gem "carrierwave-qiniu"
+gem "qiniu-rs"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
