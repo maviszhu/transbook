@@ -4,11 +4,11 @@
   <table class="infobar">
     <tbody>
       <tr>
-        <td class="sold">已售出：<span class="badge">0</span>
+        <td class="sold">已售出：<span class="badge"><%= @sold_out_count %></span>
         </td>
-        <td class="onsale">出售中：<span class="badge">12</span>
+        <td class="onsale">出售中：<span class="badge"><%= @on_sale_count %></span>
         </td>
-        <td class="not-on">未上架：<span class="badge">2</span>
+        <td class="not-on">未上架：<span class="badge"><%= @not_sale_count %></span>
         </td>
         <td class="new">
           <%= link_to(new_admin_product_path) do%>
@@ -23,9 +23,11 @@
         <th class="product-id">#</th>
         <th class="product-name"></th>
         <th class="product-look">品相</th>
-        <th class="product-price">价格(元)</th>
-        <th class='product-stock'>库存</th>
-        <th class="post-time">上架时间</th>
+        <th class="product-price">
+          <%= sort_link(@q, :price, '价格(元)', default_order: :desc) %>
+        </th>
+        <th class='product-stock'><%= sort_link(@q, :stock, '库存', default_order: :desc) %></th>
+        <th class="post-time"><%= sort_link(@q, :created_at, '添加时间', default_order: :desc) %></th>
         <th class="product-state">状态</th>
         <th class="product-option">操作</th>
       </tr>

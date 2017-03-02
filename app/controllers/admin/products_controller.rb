@@ -10,6 +10,9 @@ class Admin::ProductsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
     end
+    @sold_out_count = Product.where(:is_hidden => false).where("stock = ?", 0).count
+    @on_sale_count = Product.where(:is_hidden => false).count
+    @not_sale_count = Product.where(:is_hidden => true).count
   end
 
   def new

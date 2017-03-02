@@ -72,12 +72,12 @@ hr{
   margin-left: 0px;
 }
 .navbar-brand {
-  padding: 0px;
+  padding: 15px 0;
   margin: 10px 0px;
 }
 .navbar-brand > img{
   display: inline-block;
-  height:50px;
+  height:15px;
 }
 .navbar-collapse{
   margin-right: 0px;
@@ -359,7 +359,7 @@ margin-bottom: 20px;
 .searchbar {
     display: inline-block;
     width: 460px;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 //
@@ -420,7 +420,7 @@ margin-bottom: 20px;
 }
 .searchbar .input-group{
   width: 400px;
-  margin-left: 80px;
+  margin-left: 120px;
 }
 .searchbar .form-control:focus{
 background-color:transparent;
