@@ -16,6 +16,13 @@ class Admin::OrdersController < ApplicationController
     @product_lists = @order.product_lists
   end
 
+  def confirm
+    @order = Order.find_by_token(params[:id])
+    @order.pay!
+    @order.make_payment!
+    redirect_to admin_orders_path, alert: "确认订单！"
+  end
+
   def cancell
     @order = Order.find_by_token(params[:id])
     @order.cancell_order!

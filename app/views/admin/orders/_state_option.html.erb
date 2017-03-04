@@ -1,6 +1,7 @@
 <% case order.aasm_state %>
 <% when "order_placed" then %>
 <span class="label label-warning">未支付</span>
+<%= link_to("确认订单", confirm_admin_order_path(order.token), method: :post, class: "btn btn-link") %>
 <%= link_to("取消订单", cancell_admin_order_path(order.token), method: :post, class: "btn btn-link") %>
 <% when "paid" then %>
 <span class="label label-warning">已支付</span>
