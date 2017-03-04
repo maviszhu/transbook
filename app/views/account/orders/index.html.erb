@@ -42,7 +42,7 @@
     <div class="panel-footer">
       <% case order.aasm_state %>
       <% when "order_placed" then %>
-      <%= link_to("支付","#", method: :post, class: "btn btn-danger") %>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#pay_order">支付</button>
       <%= link_to("取消订单", to_cancell_order_account_order_path(order.token), method: :post, class: "btn btn-warning") %>
       <% when "paid" then %>
       <%= link_to("取消订单",to_cancell_order_account_order_path(order.token), method: :post, class: "btn btn-warning") %>
@@ -53,7 +53,29 @@
       <% end %>
     </div>
   </div>
+
+  <div id="pay_order" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">&yen;支付</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            <%= image_tag("pay_with_alipay.JPG", class: "pay") %>
+            <%= image_tag("pay_with_wechat.JPG", class: "pay") %>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <%= link_to("完成支付", pay_with_alipay_order_path(order.token), method: :post, class: "btn btn-danger btn-lg") %>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <% end %>
+
   <div class="text-center">
     <%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
   </div>

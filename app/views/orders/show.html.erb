@@ -66,12 +66,31 @@
     </table>
     <div class="group pull-right">
       <% if !@order.is_paid %>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#pay_order">支付</button>
 
-      <%= link_to("以支付宝支付", pay_with_alipay_order_path(@order.token), method: :post, class: "btn btn-danger") %>
-      <%= link_to("以微信支付", pay_with_wechat_order_path(@order.token), method: :post, class: "btn btn-danger") %>
     <% else %>
       <p class="text-center">此订单已完成付款。</p>
       <% end %>
     </div>
 
+  </div>
+
+  <div id="pay_order" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">&yen;支付</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            <%= image_tag("pay_with_alipay.JPG", class: "pay") %>
+            <%= image_tag("pay_with_wechat.JPG", class: "pay") %>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <%= link_to("完成支付", pay_with_alipay_order_path(@order.token), method: :post, class: "btn btn-danger btn-lg") %>
+        </div>
+      </div>
+    </div>
   </div>
