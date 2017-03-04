@@ -75,7 +75,9 @@ end
  private
 
  def product_params
-   params.require(:product).permit(:title, :description, :price, :stock, :is_hidden, :image, :bg_image, :is_recommend)
+   params.require(:product).permit(:title, :description, :price, :stock,
+                                    :is_hidden, :image, :bg_image, :is_recommend, :quality,
+                                    :writer, :publisher, :comment_title, :comment_user)
  end
 
 

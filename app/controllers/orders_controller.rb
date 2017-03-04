@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
           @product_list.product_name = cart_item.product.title
           @product_list.product_price = cart_item.product.price
           @product_list.quantity = cart_item.quantity
+          @product_list.quality = cart_item.product.quality
           if cart_item.product.image?
             @product_list.product_image = cart_item.product.image.small_thumb.url
           end
@@ -59,6 +60,6 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:billing_name, :billing_address, :shipping_name, :shipping_address)
+    params.require(:order).permit(:shipping_name, :shipping_address)
   end
 end

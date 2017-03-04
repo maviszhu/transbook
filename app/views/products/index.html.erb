@@ -14,7 +14,6 @@
     <% @recommend_products.each_with_index do |recommend_product, index| %>
     <div class="item <%= index == 1 ? 'active' : '' %>">
       <%= link_to(product_path(recommend_product)) do %>
-      <!-- <% image_tag(recommend_product.bg_image.big.url, alt: "New York") %> -->
       <div class="slide">
         <%= image_tag(recommend_product.image.thumb.url) %>
         <div class="carousel-caption">
@@ -53,7 +52,7 @@
         <p><%= image_tag(product.bg_image_url) %></p>
       <% else %>
         <!-- <blockquote class='pull-right'> -->
-        <%= simple_format(truncate(product.description, length: 120), class: "quote text-center") %>
+        <%= simple_format(truncate(product.description, length: 100), class: "quote text-center") %>
         <!-- </blockquote> -->
         <% end %>
       </div>
@@ -65,7 +64,7 @@
           <% if product.image? %>
           <%= image_tag(product.image_url(:thumb), alt: "Product Pic") %>
         <% else %>
-          <%= image_tag("nopic-thumb.jpg", alt: "No Pic") %>
+          <%= image_tag("/images/default-thumb.jpg", alt: "No Pic") %>
           <% end %>
         </div>
         <% end %>
@@ -79,30 +78,28 @@
             <%= link_to(product.title, product_path(product))  %>
           </h3>
           <div class="book-quote">
-            <p style="font-size: 14px;">
-              <span class="author"><%= product.writer %></span>
-              <span class="publisher"><%= product.publisher %></span>
+            <p class="author" style="font-size: 14px;">
+              <%= truncate(product.writer, length: 20) %>
             </p>
-            <p>
+            <p style="color: #616161;">
               <span><%= product.quality %></span>
-              <span>库存：<%= product.stock %></i>
-            </span>
-          </p>
-          <% unless current_user.present? and current_user.is_admin %>
-          <%= link_to add_to_cart_product_path(product), :method => :post, class: "btn pull-right", :remote => true do %>
-          <i class="fa fa-shopping-cart text-center"></i>
-          <% end %>
-          <% end %>
+              <span>库存：<%= product.stock %></span>
+            </p>
+            <% unless current_user.present? and current_user.is_admin %>
+            <%= link_to add_to_cart_product_path(product), :method => :post, class: "btn pull-right", :remote => true do %>
+            <i class="fa fa-shopping-cart text-center"></i>
+            <% end %>
+            <% end %>
+          </div>
+
         </div>
-
       </div>
-    </div>
 
-  </li>
-  <% end %>
-</ul>
+    </li>
+    <% end %>
+  </ul>
 </div>
 
 <div class="text-center">
-<%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+  <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 </div>

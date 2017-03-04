@@ -57,11 +57,11 @@ hr{
 
 //navbar
 .navbar{
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 0px;
   background-color: #fafafa;
   border-bottom: 1px solid #ebebeb;
-  z-index: 9999;
+  z-index: 99;
   border-radius: 0px;
   margin-bottom: 40px;
   font-size: 12px;
@@ -117,6 +117,7 @@ html, body {
     min-height: 80%;
     height: auto !important;
     height: 100%;
+    margin-top: 115px;
 }
 
 //body
@@ -170,7 +171,11 @@ footer .inner{
     border: 0;
 }
 .sidenav .thumbnail .book-price{
-  background-color: #979797;
+  background-color: #ea8269;
+}
+.comment-user{
+  padding-left: 5px;
+  color: #616161;
 }
 .sidenav .thumbnail p {
   margin-top: 5px;
@@ -207,7 +212,7 @@ ul, ol {
 }
 .slide-item .bookadvert {
   width:100%;
-  min-height: 180px;
+  height: 180px;
   padding: 0px;
   margin-bottom: 0px;
   background-color: #f8f8f8;
@@ -436,8 +441,11 @@ background-color:transparent;
 .content .pro_comment{
   width: 700px;
 }
-p > strong{
+p.book_title > strong{
   font-size: 14px;
+  letter-spacing: 2px;
+  background: #616161;
+  color: #fff;
 }
 .content .book_title{
   margin: 10px 0;
@@ -446,4 +454,9 @@ p > strong{
 .pay {
   width: 200px;
   display: inline-block;
+}
+
+//*表格输入*／／
+textarea#product_description{
+  min-height: 350px;
 }

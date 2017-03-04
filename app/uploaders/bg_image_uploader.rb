@@ -21,11 +21,11 @@ class BgImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  process resize_to_fit: [496, 200]
+  process resize_to_fit: [500, 200]
 
-  version :big do
-    process resize_to_fit: [1200, 295]
-  end
+  # version :big do
+  #   process resize_to_fit: [1200, 295]
+  # end
 
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

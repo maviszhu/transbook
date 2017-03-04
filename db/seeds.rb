@@ -6,15 +6,37 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "自动向数据库增加10条测试商品"
-puts "Product，当前字段：title，description，price，stock，is_hidden"
-
-titles = ["人月神话 40周年中文纪念版","你只是看起来很努力","站在两个世界的边缘","礼物","异类：不一样的成功启示录",
-  "少有人走的路","这一生，静待时光检验","谁说菜鸟不会数据分析","经济学","影响力"]
+puts "自动向数据库增加商品"
 
 Product.delete_all
-(1..10).each do |i|
-  Product.create(title: titles[i-1], description:"等待添加商品描述", price: rand(500), stock: 1, is_hidden:"false")
+
+qualitys = ['九五品','九品','八五品','八品','七五品','几乎全新']
+
+require 'csv'
+csv = CSV.read('/Users/zhumeijuan/railsbridge/temp/books.csv', :headers => true)
+csv.each do |row|
+  if row['title'].present?
+    # title,
+    #   writer,
+    #   publisher,
+    #   imageurl,
+    #   commenttitle = [row['title'],
+    #       row['writer'],
+    #       row['publisher'],
+    #       row['imageurl'],
+    #       row['commenttitle']].map(&:to_s)
+    Product.create({
+      :title => row['title'],
+      :writer => row['writer'],
+      :publisher => row['publisher'],
+      :quality => qualitys[rand(qualitys.length)],
+      :price => rand(30),
+      :stock => 1,
+      :is_hidden => false,
+      :coment_title => row['commenttitle'],
+      :description => row['comment']
+    })
+  end
 end
 
 puts "商品添加完成！"

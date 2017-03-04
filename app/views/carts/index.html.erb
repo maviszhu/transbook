@@ -17,18 +17,18 @@
                 <% if cart_item.product.image.present? %>
                 <%=  image_tag(cart_item.product.image_url(:thumb)) %>
               <% else %>
-                <%= image_tag("nopic-thumb.jpg") %>
+                <%= image_tag("/images/small-thumb.jpg") %>
                 <% end %>
               </div>
 
               <div class="title">
-                <p class="pro-title"><%= cart_item.product.title %></p>
+                <p><%= cart_item.product.title %></p>
               </div>
 
               <% end %>
             </td>
             <td>
-              <p class="pro-look">九五品</p>
+              <p class="pro-look"><%= cart_item.product.quality %></p>
             </td>
             <td><%= cart_item.product.price %>&nbsp;元/件</td>
             <td>

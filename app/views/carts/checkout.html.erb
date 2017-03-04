@@ -18,7 +18,7 @@
             <% if cart_item.product.image.present? %>
             <%=  image_tag(cart_item.product.image_url(:thumb)) %>
           <% else %>
-            <%= image_tag("nopic-thumb.jpg") %>
+            <%= image_tag("/images/small-thumb.jpg") %>
             <% end %>
           </div>
 

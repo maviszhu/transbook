@@ -1,88 +1,85 @@
-<div class="row">
-  <h2>历史订单</h2>
-  <hr>
-  <% if !@orders.blank? %>
-  <% @orders.each do |order| %>
-  <div class="panel panel-default">
-    <div class="panel-header">
-      <span class="order-time">
-        <%= order.created_at.to_s(:long) %></span>
-      <span class="order-id"><%= order.token %></span>
-      <span>共<%= order.product_lists.count %>种商品</span>
-      <span class="label label-default"><%= trans_order_aasm_to_string(order.aasm_state) %></span>
-      <span class="pull-right">总计&nbsp;<strong class="total-price"><%= order.total %>
-        </strong>&nbsp;RMB</span>
-    </div>
-    <table class="table">
-      <tr>
-        <th>商品明细</th>
-        <th class="product_price">价格</th>
-        <th class="quantity">数量</th>
-      </tr>
-      <% order.product_lists.each do |product_list| %>
-      <tr>
-        <td>
-          <div class="pro_pic">
-            <% if product_list.product_image.present? %>
-            <%= image_tag(product_list.product_image) %>
-          <% else %>
-            <%= image_tag("nopic-thumb.jpg") %>
-            <% end %>
-          </div>
-          <div class="title">
-            <p class="pro-title"><%= product_list.product_name %></p>
-            <p class="pro-look">品相：九五品</p>
-          </div>
-        </td>
-        <td class="product_price"><%= product_list.product_price %></td>
-        <td class="quantity"><%= product_list.quantity %></td>
-      </tr>
-      <% end %>
-    </table>
-    <div class="panel-footer">
-      <% case order.aasm_state %>
-      <% when "order_placed" then %>
-      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#pay_order">支付</button>
-      <%= link_to("取消订单", to_cancell_order_account_order_path(order.token), method: :post, class: "btn btn-warning") %>
-      <% when "paid" then %>
-      <%= link_to("取消订单",to_cancell_order_account_order_path(order.token), method: :post, class: "btn btn-warning") %>
-      <% when "shipped" then %>
-      <%= link_to("申请退货","#", method: :post, class: "btn btn-success") %>
-      <% when "order_cancelled" then %>
-      <%= link_to("删除订单",account_order_path(order.token), method: :delete, class: "btn btn-warning") %>
-      <% end %>
-    </div>
+<h2>历史订单</h2>
+<hr>
+<% if !@orders.blank? %>
+<% @orders.each do |order| %>
+<div class="panel panel-default">
+  <div class="panel-header">
+    <span class="order-time">
+      <%= order.created_at.to_s(:long) %></span>
+    <span class="order-id"><%= order.token %></span>
+    <span>共<%= order.product_lists.count %>种商品</span>
+    <span class="label label-default"><%= trans_order_aasm_to_string(order.aasm_state) %></span>
+    <span class="pull-right">总计&nbsp;<strong class="total-price"><%= order.total %>
+      </strong>&nbsp;RMB</span>
   </div>
+  <table class="table">
+    <tr>
+      <th>商品明细</th>
+      <th class="product_price">价格</th>
+      <th class="quantity">数量</th>
+    </tr>
+    <% order.product_lists.each do |product_list| %>
+    <tr>
+      <td>
+        <div class="pro_pic">
+          <% if product_list.product_image.present? %>
+          <%= image_tag(product_list.product_image) %>
+        <% else %>
+          <%= image_tag("/images/small-thumb.jpg") %>
+          <% end %>
+        </div>
+        <div class="title">
+          <p class="pro-title"><%= product_list.product_name %></p>
+          <p class="pro-look">品相：九五品</p>
+        </div>
+      </td>
+      <td class="product_price"><%= product_list.product_price %></td>
+      <td class="quantity"><%= product_list.quantity %></td>
+    </tr>
+    <% end %>
+  </table>
+  <div class="panel-footer">
+    <% case order.aasm_state %>
+    <% when "order_placed" then %>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#pay_order">支付</button>
+    <%= link_to("取消订单", to_cancell_order_account_order_path(order.token), method: :post, class: "btn btn-warning") %>
+    <% when "paid" then %>
+    <%= link_to("取消订单",to_cancell_order_account_order_path(order.token), method: :post, class: "btn btn-warning") %>
+    <% when "shipped" then %>
+    <%= link_to("申请退货","#", method: :post, class: "btn btn-success") %>
+    <% when "order_cancelled" then %>
+    <%= link_to("删除订单",account_order_path(order.token), method: :delete, class: "btn btn-warning") %>
+    <% end %>
+  </div>
+</div>
 
-  <div id="pay_order" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">&yen;支付</h4>
-        </div>
-        <div class="modal-body">
-          <p>
-            <%= image_tag("pay_with_alipay.JPG", class: "pay") %>
-            <%= image_tag("pay_with_wechat.JPG", class: "pay") %>
-          </p>
-        </div>
-        <div class="modal-footer">
-          <%= link_to("完成支付", pay_with_alipay_order_path(order.token), method: :post, class: "btn btn-danger btn-lg") %>
-        </div>
+<div id="pay_order" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">&yen;支付</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          <%= image_tag("pay_with_alipay.JPG", class: "pay") %>
+          <%= image_tag("pay_with_wechat.JPG", class: "pay") %>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <%= link_to("完成支付", pay_with_alipay_order_path(order.token), method: :post, class: "btn btn-danger btn-lg") %>
       </div>
     </div>
   </div>
-
-  <% end %>
-
-  <div class="text-center">
-    <%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
-  </div>
-<% else %>
-  <div class="well text-center">
-    <span>订单记录为空。</span>
-  </div>
-  <% end %>
-
 </div>
+
+<% end %>
+
+<div class="text-center">
+  <%= will_paginate @orders, renderer: BootstrapPagination::Rails %>
+</div>
+<% else %>
+<div class="well text-center">
+  <span>订单记录为空。</span>
+</div>
+<% end %>

@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading top">
-    <p class="text-center">订单号：<span><%= @order.token %></span>
+    <p class="text-center">订单号：<span><%= @order.id %></span>
     </p>
   </div>
   <div class="panel-body text-center">
@@ -25,7 +25,7 @@
     <table class="order-brief">
       <tbody>
         <tr>
-          <td>订单编号：<span><%= @order.token %></span>
+          <td>订单编号：<span><%= @order.id %></span>
           </td>
           <td>创建时间：<span><%= @order.created_at.to_s(:long) %></span>
           </td>
@@ -55,7 +55,7 @@
                     <% if product_list.product_image.present? %>
                     <%= image_tag(product_list.product_image) %>
                   <% else %>
-                    <%= image_tag("nopic-thumb.jpg") %>
+                    <%= image_tag("/images/small-thumb.jpg") %>
                     <% end %>
                   </p>
                 </td>
