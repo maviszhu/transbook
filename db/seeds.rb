@@ -26,8 +26,8 @@ csv.each do |row|
       :price => rand(20)+10,
       :stock => 1,
       :is_hidden => false,
-      image: open(File.join('http://om6rf40s7.bkt.clouddn.com', URI::encode(booktitle)+'.png')),
-      bg_image: open(File.join('http://om6rf40s7.bkt.clouddn.com', URI::encode(booktitle)+'2.jpg')),
+      image: File.open(File.join(Rails.root, 'public/images/seeds', booktitle+'.png')),
+      bg_image: File.open(File.join(Rails.root, 'public/images/seeds', booktitle+'2.jpg')),
       :comment_user => row['user'],
       :coment_title => row['commenttitle'],
       :description => row['comment']
