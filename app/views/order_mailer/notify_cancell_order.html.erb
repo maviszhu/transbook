@@ -37,25 +37,8 @@
 
     <h2>寄送信息</h2>
 
-    <table class="table">
-      <tbody>
-        <tr>
-          <td>订购人</td>
-        </tr>
-        <tr>
-          <td><%= @order.billing_name %>
-            -
-            <%= @order.billing_address %></td>
-        </tr>
-        <tr>
-          <td>收件人</td>
-        </tr>
-        <tr>
-          <td><%= @order.shipping_name %>
-            -
-            <%= @order.shipping_address %></td>
-        </tr>
-      </tbody>
-    </table>
+    <legend>收件人</legend>
+    <p><%= @order.shipping_name %></p>
+    <p><%= @order.shipping_address %></p>
   </div>
 </div>

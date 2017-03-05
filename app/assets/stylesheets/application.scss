@@ -178,6 +178,7 @@ footer .inner{
 .sidenav .thumbnail .book-price{
   background-color: #ea8269;
 }
+
 .comment-user{
   padding-left: 5px;
   color: #616161;
@@ -331,7 +332,17 @@ margin-bottom: 20px;
     font-size: 15px;
     line-height: 20px;
 }
-.item-details .book-price {
+.sold-out {
+    color: #fff;
+    background: #595959;
+    font-size: 15px;
+    line-height: 20px;
+}
+.btn-disabled{
+  background: #595959;
+  color: #fff;
+}
+.item-details .book-price, .item-details .sold-out {
     position: absolute;
     right: -1px;
     top: -13px;

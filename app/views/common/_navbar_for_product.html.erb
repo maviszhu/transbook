@@ -8,7 +8,11 @@
       <% if current_user.present? and current_user.is_admin %>
       <%= link_to("编辑", edit_admin_product_path(@product), class: "btn btn-danger navbar-btn") %>
     <% else %>
+      <% if @product.stock.present? && @product.stock > 0 %>
       <%= link_to("加入购物车", add_to_cart_product_path(@product), method: :post, class: "btn btn-danger navbar-btn") %>
+    <% else %>
+      <%= link_to("已售完", "#", class: "btn btn-disabled navbar-btn disabled") %>
+      <% end %>
       <% end %>
       <ul class="nav navbar-nav pull-right">
         <% unless current_user.present? and current_user.is_admin %>

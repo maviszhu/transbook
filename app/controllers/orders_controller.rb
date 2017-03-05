@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
         current_cart.cart_items.each do |cart_item|
           @product_list = ProductList.new
           @product_list.order = @order
+          @product_list.product_id = cart_item.product.id
           @product_list.product_name = cart_item.product.title
           @product_list.product_price = cart_item.product.price
           @product_list.quantity = cart_item.quantity
@@ -44,7 +45,12 @@ class OrdersController < ApplicationController
 
   def pay
     @order = Order.find_by_token(params[:id])
+    product_lists = @order.product_lists
     @order.make_payment!
+    product_lists.each do |product_list|
+      product = Product.find(product_list.product_id)
+      product.sold!(product_list.quantity)
+    end
     redirect_to order_path(@order.token), notice: "成功完成付款！"
   end
 

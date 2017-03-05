@@ -17,4 +17,8 @@ class Product < ApplicationRecord
     self.update_columns(is_hidden: true)
   end
 
+  def sold!(sold_quantity)
+    self.update_columns(stock: self.stock - sold_quantity)
+  end
+
 end
