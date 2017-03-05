@@ -40,5 +40,5 @@ User.create(email: "may@126.com", password: "123456", password_confirmation: "12
 
 User.create(email: "test@test.com", password: "123456", password_confirmation: "123456", is_admin: false)
 
-http://om6rf40s7.bkt.clouddn.com/uploads/product/bg_image/1/%E5%B0%8F%E9%A1%BE%E8%81%8A%E7%BB%98%E7%94%BB2.jpg
+
 puts "用户添加完成！"
