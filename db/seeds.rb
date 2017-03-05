@@ -13,7 +13,7 @@ Product.destroy_all
 qualitys = ['九五品','九品','八五品','八品','七五品','几乎全新']
 
 require 'csv'
-csv = CSV.read('/Users/zhumeijuan/railsbridge/temp/books.csv', :headers => true)
+csv = CSV.read('books.csv', :headers => true)
 csv.each do |row|
   if row['title'].present?
     booktitle = row['title']
