@@ -68,6 +68,11 @@ hr{
   letter-spacing: 2px;
 
 }
+.navbar-btn{
+  margin-left: 450px;
+  margin-top: 20px;
+}
+
 .navbar-header{
   margin-left: 0px;
 }
@@ -452,11 +457,23 @@ p.book_title > strong{
 }
 
 .pay {
-  width: 200px;
+  width: 100%;
   display: inline-block;
 }
 
 //*表格输入*／／
 textarea#product_description{
   min-height: 350px;
+}
+
+
+.product-content > p {
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.paid-assert{
+  width:200px;
+  font-size: 14px;
+  letter-spacing: 2px;
 }

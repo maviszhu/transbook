@@ -42,14 +42,6 @@
 
   <table class="table">
     <tbody>
-      <!-- <tr>
-          <td>订购人</td>
-        </tr>
-        <tr>
-          <td><% @order.billing_name %>
-            -
-            <% @order.billing_address %></td>
-        </tr> -->
       <tr>
         <td style="width:100px;">
           <strong>收货人：</strong>
@@ -84,12 +76,11 @@
         </div>
         <div class="modal-body">
           <p>
-            <%= image_tag("pay_with_alipay.JPG", class: "pay") %>
-            <%= image_tag("pay_with_wechat.JPG", class: "pay") %>
+            <%= image_tag("/images/payment.jpg", class: "pay") %>
           </p>
         </div>
-        <div class="modal-footer">
-          <%= link_to("完成支付", pay_with_alipay_order_path(@order.token), method: :post, class: "btn btn-danger btn-lg") %>
+        <div class="modal-footer text-center">
+          <%= link_to("已完成支付", pay_order_path(@order.token), method: :post, class: "btn btn-danger center-block paid-assert") %>
         </div>
       </div>
     </div>

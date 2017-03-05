@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
     if @product.is_hidden == true
       redirect_to root_path, warning: "无此商品页！"
     end
+    render layout: 'product'
   end
 
 

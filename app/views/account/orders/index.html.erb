@@ -14,7 +14,7 @@
   </div>
   <table class="table">
     <tr>
-      <th>商品明细</th>
+      <th class="product">商品明细</th>
       <th class="product_price">价格</th>
       <th class="quantity">数量</th>
     </tr>
@@ -30,7 +30,7 @@
         </div>
         <div class="title">
           <p class="pro-title"><%= product_list.product_name %></p>
-          <p class="pro-look">品相：九五品</p>
+          <p class="pro-look"><%= product_list.quality %></p>
         </div>
       </td>
       <td class="product_price"><%= product_list.product_price %></td>
@@ -62,12 +62,11 @@
       </div>
       <div class="modal-body">
         <p>
-          <%= image_tag("pay_with_alipay.JPG", class: "pay") %>
-          <%= image_tag("pay_with_wechat.JPG", class: "pay") %>
+          <%= image_tag("/images/payment.jpg", class: "pay") %>
         </p>
       </div>
       <div class="modal-footer">
-        <%= link_to("完成支付", pay_with_alipay_order_path(order.token), method: :post, class: "btn btn-danger btn-lg") %>
+        <%= link_to("已完成支付", pay_order_path(order.token), method: :post, class: "btn btn-danger center-block paid-assert") %>
       </div>
     </div>
   </div>

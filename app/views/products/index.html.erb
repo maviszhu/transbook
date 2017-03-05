@@ -86,7 +86,7 @@
               <span>库存：<%= product.stock %></span>
             </p>
             <% unless current_user.present? and current_user.is_admin %>
-            <%= link_to add_to_cart_product_path(product), :method => :post, class: "btn pull-right", :remote => true do %>
+            <%= link_to add_to_cart_product_path(product), :method => :post, class: "btn pull-right" do %>
             <i class="fa fa-shopping-cart text-center"></i>
             <% end %>
             <% end %>

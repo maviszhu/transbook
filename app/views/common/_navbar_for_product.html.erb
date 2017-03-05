@@ -5,10 +5,10 @@
         <i>T</i>rans<%= image_tag("logo.svg") %>book</a>
     </div>
     <div class="collapse navbar-collapse" id='bs-example-navbar-collapse-1'>
-      <% if @IS_INDEX %>
-      <ul class="nav navbar-nav">
-        <li><%= render 'common/search' %></li>
-      </ul>
+      <% if current_user.present? and current_user.is_admin %>
+      <%= link_to("编辑", edit_admin_product_path(@product), class: "btn btn-danger navbar-btn") %>
+    <% else %>
+      <%= link_to("加入购物车", add_to_cart_product_path(@product), method: :post, class: "btn btn-danger navbar-btn") %>
       <% end %>
       <ul class="nav navbar-nav pull-right">
         <% unless current_user.present? and current_user.is_admin %>

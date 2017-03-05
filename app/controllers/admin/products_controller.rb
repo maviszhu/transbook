@@ -6,7 +6,7 @@ class Admin::ProductsController < ApplicationController
   def index
     @IS_INDEX = true
     @q = Product.ransack(params[:q])
-    @products = @q.result.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    @products = @q.result.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html # index.html.erb
     end
